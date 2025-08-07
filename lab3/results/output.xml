@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3 (Python 3.13.2 on darwin)" generated="2025-08-07T09:10:01.879092" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3 (Python 3.13.2 on darwin)" generated="2025-08-07T12:56:51.919543" rpa="false" schemaversion="5">
 <suite id="s1" name="Test Mock Fulfillment" source="/Users/bambasene/PycharmProjects/RobotFramework/Exam_Qa_Test/lab3/testcases/test_mock_fulfillment.robot">
 <test id="s1-t1" name="Mock - Créer Un Fulfillment - Succès" line="13">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.184242" level="INFO">${line_item} = {'lineItemId': '170009092860-9849164007', 'quantity': 1}</msg>
+<msg time="2025-08-07T12:56:52.192141" level="INFO">${line_item} = {'lineItemId': '170009092860-9849164007', 'quantity': 1}</msg>
 <var>${line_item}</var>
 <arg>lineItemId=${LINE_ITEM_ID}</arg>
 <arg>quantity=${1}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.183415" elapsed="0.000878"/>
+<status status="PASS" start="2025-08-07T12:56:52.191434" elapsed="0.000753"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.184698" level="INFO">${line_items} = [{'lineItemId': '170009092860-9849164007', 'quantity': 1}]</msg>
+<msg time="2025-08-07T12:56:52.192608" level="INFO">${line_items} = [{'lineItemId': '170009092860-9849164007', 'quantity': 1}]</msg>
 <var>${line_items}</var>
 <arg>${line_item}</arg>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.184468" elapsed="0.000266"/>
+<status status="PASS" start="2025-08-07T12:56:52.192392" elapsed="0.000252"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.185192" level="INFO">${request_data} = {'lineItems': [{'lineItemId': '170009092860-9849164007', 'quantity': 1}], 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS', 'shippedDate': '2025-07-29T14:30:00.000Z'}</msg>
+<msg time="2025-08-07T12:56:52.193121" level="INFO">${request_data} = {'lineItems': [{'lineItemId': '170009092860-9849164007', 'quantity': 1}], 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS', 'shippedDate': '2025-07-29T14:30:00.000Z'}</msg>
 <var>${request_data}</var>
 <arg>lineItems=${line_items}</arg>
 <arg>trackingNumber=${TRACKING_NUMBER}</arg>
 <arg>shippingCarrierCode=UPS</arg>
 <arg>shippedDate=2025-07-29T14:30:00.000Z</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.184871" elapsed="0.000355"/>
+<status status="PASS" start="2025-08-07T12:56:52.192812" elapsed="0.000343"/>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.185868" level="INFO">Length is 1.</msg>
+<msg time="2025-08-07T12:56:52.193838" level="INFO">Length is 1.</msg>
 <arg>${request_data['lineItems']}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.185353" elapsed="0.000577"/>
+<status status="PASS" start="2025-08-07T12:56:52.193338" elapsed="0.000557"/>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.186499" level="INFO">Length is 17.</msg>
+<msg time="2025-08-07T12:56:52.194496" level="INFO">Length is 17.</msg>
 <arg>${request_data['trackingNumber']}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.186045" elapsed="0.000513"/>
+<status status="PASS" start="2025-08-07T12:56:52.194041" elapsed="0.000523"/>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.187098" level="INFO">Length is 3.</msg>
+<msg time="2025-08-07T12:56:52.195204" level="INFO">Length is 3.</msg>
 <arg>${request_data['shippingCarrierCode']}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.186671" elapsed="0.000485"/>
+<status status="PASS" start="2025-08-07T12:56:52.194711" elapsed="0.000558"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.187676" level="INFO">${mock_response} = {'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476', 'lineItems': [{'lineItemId': '170009092860-9849164007', 'quantity': 1}], 'trackingNumber': '1Z999AA1234567890', ...</msg>
+<msg time="2025-08-07T12:56:52.195827" level="INFO">${mock_response} = {'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476', 'lineItems': [{'lineItemId': '170009092860-9849164007', 'quantity': 1}], 'trackingNumber': '1Z999AA1234567890', ...</msg>
 <var>${mock_response}</var>
 <arg>fulfillmentId=${MOCK_FULFILLMENT_ID}</arg>
 <arg>orderId=${ORDER_ID}</arg>
@@ -55,38 +55,38 @@
 <arg>shippingCarrierCode=UPS</arg>
 <arg>shippedDate=2025-07-29T14:30:00.000Z</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.187278" elapsed="0.000433"/>
+<status status="PASS" start="2025-08-07T12:56:52.195437" elapsed="0.000425"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${mock_response['orderId']}</arg>
 <arg>${ORDER_ID}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.187839" elapsed="0.000547"/>
+<status status="PASS" start="2025-08-07T12:56:52.196021" elapsed="0.000517"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${mock_response['trackingNumber']}</arg>
 <arg>${TRACKING_NUMBER}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.188515" elapsed="0.000511"/>
+<status status="PASS" start="2025-08-07T12:56:52.196691" elapsed="0.000491"/>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.189582" level="INFO">Length is 12.</msg>
+<msg time="2025-08-07T12:56:52.197783" level="INFO">Length is 12.</msg>
 <arg>${mock_response['fulfillmentId']}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.189145" elapsed="0.000493"/>
+<status status="PASS" start="2025-08-07T12:56:52.197355" elapsed="0.000483"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.189916" level="INFO">✅ Mock: Fulfillment créé avec succès - ID: FUL123456789</msg>
-<arg>✅ Mock: Fulfillment créé avec succès - ID: ${MOCK_FULFILLMENT_ID}</arg>
+<msg time="2025-08-07T12:56:52.198133" level="INFO">Mock: Fulfillment créé avec succès - ID: FUL123456789</msg>
+<arg>Mock: Fulfillment créé avec succès - ID: ${MOCK_FULFILLMENT_ID}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.189761" elapsed="0.000212"/>
+<status status="PASS" start="2025-08-07T12:56:52.197989" elapsed="0.000201"/>
 </kw>
 <doc>Test mock de création de fulfillment - simule une réponse 201</doc>
-<status status="PASS" start="2025-08-07T09:10:02.182364" elapsed="0.007723"/>
+<status status="PASS" start="2025-08-07T12:56:52.190445" elapsed="0.007895"/>
 </test>
 <test id="s1-t2" name="Mock - Lire Un Fulfillment - Succès" line="46">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.191131" level="INFO">${mock_fulfillment} = {'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476', 'lineItems': '[{"lineItemId": "170009092860-9849164007", "quantity": 1}]', 'trackingNumber': '1Z999AA1234567890'...</msg>
+<msg time="2025-08-07T12:56:52.199369" level="INFO">${mock_fulfillment} = {'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476', 'lineItems': '[{"lineItemId": "170009092860-9849164007", "quantity": 1}]', 'trackingNumber': '1Z999AA1234567890'...</msg>
 <var>${mock_fulfillment}</var>
 <arg>fulfillmentId=${MOCK_FULFILLMENT_ID}</arg>
 <arg>orderId=${ORDER_ID}</arg>
@@ -95,122 +95,122 @@
 <arg>shippingCarrierCode=UPS</arg>
 <arg>shippedDate=2025-07-29T14:30:00.000Z</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.190711" elapsed="0.000456"/>
+<status status="PASS" start="2025-08-07T12:56:52.198960" elapsed="0.000443"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${mock_fulfillment['fulfillmentId']}</arg>
 <arg>${MOCK_FULFILLMENT_ID}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.191298" elapsed="0.000499"/>
+<status status="PASS" start="2025-08-07T12:56:52.199563" elapsed="0.000473"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${mock_fulfillment['orderId']}</arg>
 <arg>${ORDER_ID}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.191919" elapsed="0.000511"/>
+<status status="PASS" start="2025-08-07T12:56:52.200182" elapsed="0.000474"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${mock_fulfillment['trackingNumber']}</arg>
 <arg>${MOCK_TRACKING_NUMBER}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.192554" elapsed="0.000496"/>
+<status status="PASS" start="2025-08-07T12:56:52.200798" elapsed="0.000519"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.193317" level="INFO">✅ Mock: Fulfillment lu avec succès - ID: FUL123456789</msg>
-<arg>✅ Mock: Fulfillment lu avec succès - ID: ${MOCK_FULFILLMENT_ID}</arg>
+<msg time="2025-08-07T12:56:52.201632" level="INFO">Mock: Fulfillment lu avec succès - ID: FUL123456789</msg>
+<arg>Mock: Fulfillment lu avec succès - ID: ${MOCK_FULFILLMENT_ID}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.193176" elapsed="0.000192"/>
+<status status="PASS" start="2025-08-07T12:56:52.201484" elapsed="0.000201"/>
 </kw>
 <doc>Test mock de lecture de fulfillment - simule une réponse 200</doc>
-<status status="PASS" start="2025-08-07T09:10:02.190310" elapsed="0.003166"/>
+<status status="PASS" start="2025-08-07T12:56:52.198564" elapsed="0.003276"/>
 </test>
 <test id="s1-t3" name="Mock - Lister Fulfillments - Succès" line="65">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.194400" level="INFO">${fulfillment1} = {'fulfillmentId': 'FUL123456789', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}</msg>
+<msg time="2025-08-07T12:56:52.202900" level="INFO">${fulfillment1} = {'fulfillmentId': 'FUL123456789', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}</msg>
 <var>${fulfillment1}</var>
 <arg>fulfillmentId=${MOCK_FULFILLMENT_ID}</arg>
 <arg>trackingNumber=${MOCK_TRACKING_NUMBER}</arg>
 <arg>shippingCarrierCode=UPS</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.194091" elapsed="0.000344"/>
+<status status="PASS" start="2025-08-07T12:56:52.202523" elapsed="0.000420"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.194752" level="INFO">${fulfillment2} = {'fulfillmentId': 'FUL987654321', 'trackingNumber': '1Z888BB9876543210', 'shippingCarrierCode': 'FEDEX'}</msg>
+<msg time="2025-08-07T12:56:52.203441" level="INFO">${fulfillment2} = {'fulfillmentId': 'FUL987654321', 'trackingNumber': '1Z888BB9876543210', 'shippingCarrierCode': 'FEDEX'}</msg>
 <var>${fulfillment2}</var>
 <arg>fulfillmentId=FUL987654321</arg>
 <arg>trackingNumber=1Z888BB9876543210</arg>
 <arg>shippingCarrierCode=FEDEX</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.194560" elapsed="0.000224"/>
+<status status="PASS" start="2025-08-07T12:56:52.203185" elapsed="0.000294"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.195175" level="INFO">${fulfillments_list} = [{'fulfillmentId': 'FUL123456789', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}, {'fulfillmentId': 'FUL987654321', 'trackingNumber': '1Z888BB9876543210', 'shippingCarrierCode':...</msg>
+<msg time="2025-08-07T12:56:52.204129" level="INFO">${fulfillments_list} = [{'fulfillmentId': 'FUL123456789', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}, {'fulfillmentId': 'FUL987654321', 'trackingNumber': '1Z888BB9876543210', 'shippingCarrierCode':...</msg>
 <var>${fulfillments_list}</var>
 <arg>${fulfillment1}</arg>
 <arg>${fulfillment2}</arg>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.194973" elapsed="0.000234"/>
+<status status="PASS" start="2025-08-07T12:56:52.203801" elapsed="0.000367"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.195832" level="INFO">${mock_response} = {'fulfillments': [{'fulfillmentId': 'FUL123456789', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}, {'fulfillmentId': 'FUL987654321', 'trackingNumber': '1Z888BB9876543210', 'ship...</msg>
+<msg time="2025-08-07T12:56:52.204906" level="INFO">${mock_response} = {'fulfillments': [{'fulfillmentId': 'FUL123456789', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}, {'fulfillmentId': 'FUL987654321', 'trackingNumber': '1Z888BB9876543210', 'ship...</msg>
 <var>${mock_response}</var>
 <arg>fulfillments=${fulfillments_list}</arg>
 <arg>total=${2}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.195328" elapsed="0.000538"/>
+<status status="PASS" start="2025-08-07T12:56:52.204376" elapsed="0.000569"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.196444" level="INFO">Argument types are:
+<msg time="2025-08-07T12:56:52.205801" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${mock_response['total']}</arg>
 <arg>2</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.195981" elapsed="0.000533"/>
+<status status="PASS" start="2025-08-07T12:56:52.205103" elapsed="0.000776"/>
 </kw>
 <kw name="Length Should Be" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.197067" level="INFO">Length is 2.</msg>
+<msg time="2025-08-07T12:56:52.206533" level="INFO">Length is 2.</msg>
 <arg>${mock_response['fulfillments']}</arg>
 <arg>2</arg>
 <doc>Verifies that the length of the given item is correct.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.196628" elapsed="0.000494"/>
+<status status="PASS" start="2025-08-07T12:56:52.206074" elapsed="0.000515"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.197700" level="INFO">✅ Mock: Liste de 2 fulfillments récupérée</msg>
-<arg>✅ Mock: Liste de ${mock_response['total']} fulfillments récupérée</arg>
+<msg time="2025-08-07T12:56:52.207203" level="INFO">Mock: Liste de 2 fulfillments récupérée</msg>
+<arg>Mock: Liste de ${mock_response['total']} fulfillments récupérée</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.197238" elapsed="0.000517"/>
+<status status="PASS" start="2025-08-07T12:56:52.206752" elapsed="0.000509"/>
 </kw>
 <doc>Test mock de listing des fulfillments - simule une réponse 200</doc>
-<status status="PASS" start="2025-08-07T09:10:02.193667" elapsed="0.004193"/>
+<status status="PASS" start="2025-08-07T12:56:52.202061" elapsed="0.005341"/>
 </test>
 <test id="s1-t4" name="Mock - Créer Un Fulfillment - Erreur Validation" line="91">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.199183" level="INFO">${invalid_line_item} = {'lineItemId': '', 'quantity': 1}</msg>
+<msg time="2025-08-07T12:56:52.208737" level="INFO">${invalid_line_item} = {'lineItemId': '', 'quantity': 1}</msg>
 <var>${invalid_line_item}</var>
 <arg>lineItemId=${EMPTY}</arg>
 <arg>quantity=${1}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.198431" elapsed="0.000786"/>
+<status status="PASS" start="2025-08-07T12:56:52.207984" elapsed="0.000787"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.199508" level="INFO">${invalid_line_items} = [{'lineItemId': '', 'quantity': 1}]</msg>
+<msg time="2025-08-07T12:56:52.209093" level="INFO">${invalid_line_items} = [{'lineItemId': '', 'quantity': 1}]</msg>
 <var>${invalid_line_items}</var>
 <arg>${invalid_line_item}</arg>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.199332" elapsed="0.000206"/>
+<status status="PASS" start="2025-08-07T12:56:52.208922" elapsed="0.000200"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.199961" level="INFO">${invalid_data} = {'lineItems': [{'lineItemId': '', 'quantity': 1}], 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}</msg>
+<msg time="2025-08-07T12:56:52.209554" level="INFO">${invalid_data} = {'lineItems': [{'lineItemId': '', 'quantity': 1}], 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}</msg>
 <var>${invalid_data}</var>
 <arg>lineItems=${invalid_line_items}</arg>
 <arg>trackingNumber=${TRACKING_NUMBER}</arg>
 <arg>shippingCarrierCode=UPS</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.199653" elapsed="0.000338"/>
+<status status="PASS" start="2025-08-07T12:56:52.209274" elapsed="0.000310"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.200322" level="INFO">${mock_error} = {'errorId': '25002', 'domain': 'API_FULFILLMENT', 'category': 'REQUEST', 'message': 'Invalid line item ID', 'longMessage': 'The line item ID cannot be empty'}</msg>
+<msg time="2025-08-07T12:56:52.209938" level="INFO">${mock_error} = {'errorId': '25002', 'domain': 'API_FULFILLMENT', 'category': 'REQUEST', 'message': 'Invalid line item ID', 'longMessage': 'The line item ID cannot be empty'}</msg>
 <var>${mock_error}</var>
 <arg>errorId=25002</arg>
 <arg>domain=API_FULFILLMENT</arg>
@@ -218,121 +218,121 @@
 <arg>message=Invalid line item ID</arg>
 <arg>longMessage=The line item ID cannot be empty</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.200113" elapsed="0.000239"/>
+<status status="PASS" start="2025-08-07T12:56:52.209734" elapsed="0.000235"/>
 </kw>
 <kw name="Should Be Empty" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.200878" level="INFO">Length is 0.</msg>
+<msg time="2025-08-07T12:56:52.210521" level="INFO">Length is 0.</msg>
 <arg>${invalid_data['lineItems'][0]['lineItemId']}</arg>
 <doc>Verifies that the given item is empty.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.200463" elapsed="0.000479"/>
+<status status="PASS" start="2025-08-07T12:56:52.210109" elapsed="0.000464"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
 <arg>${mock_error['errorId']}</arg>
 <arg>25002</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.201046" elapsed="0.000470"/>
+<status status="PASS" start="2025-08-07T12:56:52.210710" elapsed="0.000475"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.201717" level="INFO">✅ Mock: Erreur de validation correctement détectée</msg>
-<arg>✅ Mock: Erreur de validation correctement détectée</arg>
+<msg time="2025-08-07T12:56:52.211426" level="INFO">Mock: Erreur de validation correctement détectée</msg>
+<arg>Mock: Erreur de validation correctement détectée</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.201628" elapsed="0.000141"/>
+<status status="PASS" start="2025-08-07T12:56:52.211334" elapsed="0.000145"/>
 </kw>
 <doc>Test mock d'erreur de validation - simule une réponse 400</doc>
-<status status="PASS" start="2025-08-07T09:10:02.198041" elapsed="0.003824"/>
+<status status="PASS" start="2025-08-07T12:56:52.207593" elapsed="0.004016"/>
 </test>
 <test id="s1-t5" name="Mock - Scénario Complet Integration" line="116">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.202512" level="INFO">=== SCÉNARIO MOCK COMPLET ===</msg>
+<msg time="2025-08-07T12:56:52.212289" level="INFO">=== SCÉNARIO MOCK COMPLET ===</msg>
 <arg>=== SCÉNARIO MOCK COMPLET ===</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.202407" elapsed="0.000153"/>
+<status status="PASS" start="2025-08-07T12:56:52.212183" elapsed="0.000160"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.202962" level="INFO">${create_data} = {'lineItems': '[{"lineItemId": "170009092860-9849164007", "quantity": 1}]', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS', 'shippedDate': '2025-07-29T14:30:00.000Z'}</msg>
+<msg time="2025-08-07T12:56:52.212771" level="INFO">${create_data} = {'lineItems': '[{"lineItemId": "170009092860-9849164007", "quantity": 1}]', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS', 'shippedDate': '2025-07-29T14:30:00.000Z'}</msg>
 <var>${create_data}</var>
 <arg>lineItems=[{"lineItemId": "${LINE_ITEM_ID}", "quantity": 1}]</arg>
 <arg>trackingNumber=${MOCK_TRACKING_NUMBER}</arg>
 <arg>shippingCarrierCode=UPS</arg>
 <arg>shippedDate=2025-07-29T14:30:00.000Z</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.202668" elapsed="0.000324"/>
+<status status="PASS" start="2025-08-07T12:56:52.212481" elapsed="0.000321"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.203360" level="INFO">${created_fulfillment} = {'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476'}</msg>
+<msg time="2025-08-07T12:56:52.213218" level="INFO">${created_fulfillment} = {'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476'}</msg>
 <var>${created_fulfillment}</var>
 <arg>fulfillmentId=${MOCK_FULFILLMENT_ID}</arg>
 <arg>orderId=${ORDER_ID}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.203107" elapsed="0.000282"/>
+<status status="PASS" start="2025-08-07T12:56:52.212951" elapsed="0.000297"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.203891" level="INFO">ÉTAPE 1 MOCK: Fulfillment créé - FUL123456789</msg>
+<msg time="2025-08-07T12:56:52.213790" level="INFO">ÉTAPE 1 MOCK: Fulfillment créé - FUL123456789</msg>
 <arg>ÉTAPE 1 MOCK: Fulfillment créé - ${created_fulfillment['fulfillmentId']}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.203494" elapsed="0.000447"/>
+<status status="PASS" start="2025-08-07T12:56:52.213384" elapsed="0.000459"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.204634" level="INFO">${read_fulfillment} = {'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}</msg>
+<msg time="2025-08-07T12:56:52.214603" level="INFO">${read_fulfillment} = {'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}</msg>
 <var>${read_fulfillment}</var>
 <arg>fulfillmentId=${created_fulfillment['fulfillmentId']}</arg>
 <arg>orderId=${ORDER_ID}</arg>
 <arg>trackingNumber=${MOCK_TRACKING_NUMBER}</arg>
 <arg>shippingCarrierCode=UPS</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.204057" elapsed="0.000608"/>
+<status status="PASS" start="2025-08-07T12:56:52.213990" elapsed="0.000646"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${read_fulfillment['fulfillmentId']}</arg>
 <arg>${created_fulfillment['fulfillmentId']}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.204777" elapsed="0.000762"/>
+<status status="PASS" start="2025-08-07T12:56:52.214789" elapsed="0.000761"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.205744" level="INFO">ÉTAPE 2 MOCK: Fulfillment lu avec succès</msg>
+<msg time="2025-08-07T12:56:52.215907" level="INFO">ÉTAPE 2 MOCK: Fulfillment lu avec succès</msg>
 <arg>ÉTAPE 2 MOCK: Fulfillment lu avec succès</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.205653" elapsed="0.000137"/>
+<status status="PASS" start="2025-08-07T12:56:52.215796" elapsed="0.000162"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.206051" level="INFO">${all_fulfillments} = [{'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}]</msg>
+<msg time="2025-08-07T12:56:52.216281" level="INFO">${all_fulfillments} = [{'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}]</msg>
 <var>${all_fulfillments}</var>
 <arg>${read_fulfillment}</arg>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.205888" elapsed="0.000192"/>
+<status status="PASS" start="2025-08-07T12:56:52.216102" elapsed="0.000209"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.206431" level="INFO">${list_response} = {'fulfillments': [{'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}], 'total': '1'}</msg>
+<msg time="2025-08-07T12:56:52.216710" level="INFO">${list_response} = {'fulfillments': [{'fulfillmentId': 'FUL123456789', 'orderId': '170009092860-9849164007!140000000544476', 'trackingNumber': '1Z999AA1234567890', 'shippingCarrierCode': 'UPS'}], 'total': '1'}</msg>
 <var>${list_response}</var>
 <arg>fulfillments=${all_fulfillments}</arg>
 <arg>total=1</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.206187" elapsed="0.000274"/>
+<status status="PASS" start="2025-08-07T12:56:52.216455" elapsed="0.000285"/>
 </kw>
 <kw name="Length Should Be" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.206977" level="INFO">Length is 1.</msg>
+<msg time="2025-08-07T12:56:52.217357" level="INFO">Length is 1.</msg>
 <arg>${list_response['fulfillments']}</arg>
 <arg>1</arg>
 <doc>Verifies that the length of the given item is correct.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.206564" elapsed="0.000464"/>
+<status status="PASS" start="2025-08-07T12:56:52.216905" elapsed="0.000516"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.207571" level="INFO">ÉTAPE 3 MOCK: Liste récupérée avec 1 fulfillment(s)</msg>
+<msg time="2025-08-07T12:56:52.218019" level="INFO">ÉTAPE 3 MOCK: Liste récupérée avec 1 fulfillment(s)</msg>
 <arg>ÉTAPE 3 MOCK: Liste récupérée avec ${list_response['total']} fulfillment(s)</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.207141" elapsed="0.000482"/>
+<status status="PASS" start="2025-08-07T12:56:52.217568" elapsed="0.000504"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T09:10:02.207817" level="INFO">✅ SCÉNARIO MOCK COMPLET RÉUSSI</msg>
-<arg>✅ SCÉNARIO MOCK COMPLET RÉUSSI</arg>
+<msg time="2025-08-07T12:56:52.218313" level="INFO">SCÉNARIO MOCK COMPLET RÉUSSI</msg>
+<arg>SCÉNARIO MOCK COMPLET RÉUSSI</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T09:10:02.207728" elapsed="0.000137"/>
+<status status="PASS" start="2025-08-07T12:56:52.218216" elapsed="0.000144"/>
 </kw>
 <doc>Test mock d'un scénario complet: créer → lire → lister</doc>
-<status status="PASS" start="2025-08-07T09:10:02.202031" elapsed="0.005929"/>
+<status status="PASS" start="2025-08-07T12:56:52.211800" elapsed="0.006693"/>
 </test>
 <doc>Tests MOCK pour les fulfillments eBay - Alternative au sandbox défaillant</doc>
-<status status="PASS" start="2025-08-07T09:10:01.881879" elapsed="0.326427"/>
+<status status="PASS" start="2025-08-07T12:56:51.920884" elapsed="0.297985"/>
 </suite>
 <statistics>
 <total>

@@ -3,7 +3,7 @@ MONGODB_CONNECTION_STRING = "mongodb+srv://cabsene:passer123@fakestorecluster.qd
 DATABASE_NAME = "fakeStoreDB"
 COLLECTION_NAME = "products"
 
-# Données de test valides pour Products
+
 VALID_PRODUCT_DATA = {
     "id": 999,
     "title": "Test Product Robot Framework",

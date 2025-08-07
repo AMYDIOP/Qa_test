@@ -42,4 +42,4 @@ Lister Les Fulfillments - Succès
     # Vérifier qu'il y a au moins 1 fulfillment
     Should Be True    ${json_data['total']} >= 1
 
-    Log    ✅ Liste récupérée avec succès !
+    Log     Liste récupérée avec succès !

@@ -40,10 +40,10 @@ Créer Un Fulfillment - Succès
 Créer Un Fulfillment - Erreur
     [Documentation]    Test avec des données invalides
 
-    # 1. Préparer l'URL
+
     ${url}=    Set Variable    /order/${ORDER_ID}/shipping_fulfillment
 
-    # 2. Données INVALIDES
+
     ${line_item}=    Create Dictionary    lineItemId=${EMPTY}    quantity=${1}
     ${line_items}=    Create List    ${line_item}
     ${data}=    Create Dictionary
@@ -51,15 +51,15 @@ Créer Un Fulfillment - Erreur
     ...    trackingNumber=${TRACKING_NUMBER}
     ...    shippingCarrierCode=UPS
 
-    # 3. Headers
+
     ${headers}=    Create Dictionary
     ...    Authorization=${AUTH_HEADER}
     ...    Content-Type=application/json
 
-    # 4. Envoyer la requête
+
     ${response}=    POST On Session    ebay    ${url}    json=${data}    headers=${headers}    expected_status=any
 
-    # 5. Vérifier qu'on a bien une erreur
+
     Should Be Equal As Integers    ${response.status_code}    400
 
     Log     Erreur bien détectée !

@@ -31,7 +31,7 @@ Lire Un Fulfillment - Succès
     Log    Fulfillment créé avec ID: ${fulfillment_id}
 
 
-    Log    Étape 2: Lecture du fulfillment
+    Log    Lecture du fulfillment
     ${read_url}=    Set Variable    /order/${ORDER_ID}/shipping_fulfillment/${fulfillment_id}
 
     ${read_response}=    GET On Session    ebay    ${read_url}    headers=${headers}    expected_status=any
@@ -60,4 +60,4 @@ Lire Un Fulfillment - Pas Trouvé
 
     Should Be Equal As Integers    ${response.status_code}    404
 
-    Log    ✅ Erreur 404 bien détectée !
+    Log     Erreur 404 bien détectée !

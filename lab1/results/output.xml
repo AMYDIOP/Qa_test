@@ -1,1075 +1,1111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3 (Python 3.13.2 on darwin)" generated="2025-08-07T12:46:16.192879" rpa="false" schemaversion="5">
-<suite id="s1" name="Test Crud Integration" source="/Users/bambasene/PycharmProjects/RobotFramework/Exam_Qa_Test/lab1/testcases/test_crud_integration.robot">
-<kw name="Connecter MongoDB" owner="keywords" type="SETUP">
+<robot generator="Robot 7.3 (Python 3.13.2 on darwin)" generated="2025-08-07T18:26:50.139814" rpa="false" schemaversion="5">
+<suite id="s1" name="Test Carts Crud Integration" source="/Users/bambasene/PycharmProjects/RobotFramework/Exam_Qa_Test/lab1/testcases/test_carts_crud_integration.robot">
+<kw name="Connecter MongoDB Carts" owner="cart_keywords" type="SETUP">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:16.610022" level="INFO">${client} = MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017'], document_class=dict, tz_a...</msg>
+<msg time="2025-08-07T18:26:51.093476" level="INFO">${client} = MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017'], document_class=dict, tz_a...</msg>
 <var>${client}</var>
 <arg>__import__('pymongo').MongoClient("${MONGODB_CONNECTION_STRING}")</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:16.225364" elapsed="0.384730"/>
+<status status="PASS" start="2025-08-07T18:26:50.176436" elapsed="0.917104"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:16.610823" level="INFO">${db} = Database(MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017'], document_class=d...</msg>
+<msg time="2025-08-07T18:26:51.094197" level="INFO">${db} = Database(MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017'], document_class=d...</msg>
 <var>${db}</var>
 <arg>$client["${DATABASE_NAME}"]</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:16.610319" elapsed="0.000546"/>
+<status status="PASS" start="2025-08-07T18:26:51.093742" elapsed="0.000497"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:16.611382" level="INFO">${coll} = Collection(Database(MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017'], docum...</msg>
+<msg time="2025-08-07T18:26:51.094685" level="INFO">${coll} = Collection(Database(MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017'], docum...</msg>
 <var>${coll}</var>
-<arg>$db["${COLLECTION_NAME}"]</arg>
+<arg>$db["carts"]</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:16.611008" elapsed="0.000411"/>
+<status status="PASS" start="2025-08-07T18:26:51.094384" elapsed="0.000337"/>
 </kw>
 <kw name="Set Global Variable" owner="BuiltIn">
-<msg time="2025-08-07T12:46:16.611815" level="INFO">${DB_CLIENT} = MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017'], document_class=dict, tz_a...</msg>
+<msg time="2025-08-07T18:26:51.095116" level="INFO">${DB_CLIENT} = MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017'], document_class=dict, tz_a...</msg>
 <arg>${DB_CLIENT}</arg>
 <arg>${client}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<status status="PASS" start="2025-08-07T12:46:16.611550" elapsed="0.000322"/>
+<status status="PASS" start="2025-08-07T18:26:51.094853" elapsed="0.000323"/>
 </kw>
 <kw name="Set Global Variable" owner="BuiltIn">
-<msg time="2025-08-07T12:46:16.612240" level="INFO">${DATABASE} = Database(MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017'], document_class=d...</msg>
+<msg time="2025-08-07T18:26:51.095598" level="INFO">${DATABASE} = Database(MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017'], document_class=d...</msg>
 <arg>${DATABASE}</arg>
 <arg>${db}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<status status="PASS" start="2025-08-07T12:46:16.612001" elapsed="0.000294"/>
+<status status="PASS" start="2025-08-07T18:26:51.095301" elapsed="0.000362"/>
 </kw>
 <kw name="Set Global Variable" owner="BuiltIn">
-<msg time="2025-08-07T12:46:16.612637" level="INFO">${COLLECTION} = Collection(Database(MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017'], docum...</msg>
-<arg>${COLLECTION}</arg>
+<msg time="2025-08-07T18:26:51.096020" level="INFO">${CART_COLLECTION} = Collection(Database(MongoClient(host=['ac-sbw62oc-shard-00-02.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-00.qdewjiz.mongodb.net:27017', 'ac-sbw62oc-shard-00-01.qdewjiz.mongodb.net:27017'], docum...</msg>
+<arg>${CART_COLLECTION}</arg>
 <arg>${coll}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<status status="PASS" start="2025-08-07T12:46:16.612413" elapsed="0.000277"/>
+<status status="PASS" start="2025-08-07T18:26:51.095789" elapsed="0.000284"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:16.612920" level="INFO">Connexion MongoDB réussie</msg>
-<arg>Connexion MongoDB réussie</arg>
+<msg time="2025-08-07T18:26:51.096305" level="INFO">Connexion MongoDB Carts réussie</msg>
+<arg>Connexion MongoDB Carts réussie</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:16.612808" elapsed="0.000164"/>
+<status status="PASS" start="2025-08-07T18:26:51.096198" elapsed="0.000160"/>
 </kw>
-<doc>Se connecter à MongoDB Atlas</doc>
-<status status="PASS" start="2025-08-07T12:46:16.224993" elapsed="0.388059"/>
+<doc>Se connecter à MongoDB Atlas pour les carts</doc>
+<status status="PASS" start="2025-08-07T18:26:50.176104" elapsed="0.920331"/>
 </kw>
-<test id="s1-t1" name="CREATE - Scénario Passant - Créer Produit Valide" line="11">
+<test id="s1-t1" name="CREATE - Scénario Passant - Créer Panier Valide" line="12">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:16.613804" level="INFO">=== TEST CREATE PASSANT ===</msg>
-<arg>=== TEST CREATE PASSANT ===</arg>
+<msg time="2025-08-07T18:26:51.097222" level="INFO">=== TEST CREATE CART PASSANT ===</msg>
+<arg>=== TEST CREATE CART PASSANT ===</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:16.613670" elapsed="0.000193"/>
+<status status="PASS" start="2025-08-07T18:26:51.097089" elapsed="0.000191"/>
 </kw>
-<kw name="Compter Produits" owner="keywords">
+<kw name="Compter Paniers" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.104862" level="INFO">${count} = 0</msg>
+<msg time="2025-08-07T18:26:55.465288" level="INFO">${count} = 0</msg>
 <var>${count}</var>
-<arg>$COLLECTION.count_documents({"id": ${product_id}})</arg>
+<arg>$CART_COLLECTION.count_documents({"id": ${cart_id}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:16.614899" elapsed="2.490089"/>
+<status status="PASS" start="2025-08-07T18:26:51.098359" elapsed="4.367032"/>
 </kw>
 <return>
 <value>${count}</value>
-<status status="PASS" start="2025-08-07T12:46:19.105134" elapsed="0.000092"/>
+<status status="PASS" start="2025-08-07T18:26:55.465550" elapsed="0.000089"/>
 </return>
-<msg time="2025-08-07T12:46:19.105490" level="INFO">${count_avant} = 0</msg>
+<msg time="2025-08-07T18:26:55.465901" level="INFO">${count_avant} = 0</msg>
 <var>${count_avant}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
-<doc>Compter les produits avec cet ID</doc>
-<status status="PASS" start="2025-08-07T12:46:16.614110" elapsed="2.491426"/>
+<arg>${TEST_CART_ID}</arg>
+<doc>Compter les paniers avec cet ID</doc>
+<status status="PASS" start="2025-08-07T18:26:51.097536" elapsed="4.368414"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.106070" level="INFO">Argument types are:
+<msg time="2025-08-07T18:26:55.466488" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${count_avant}</arg>
 <arg>0</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.105816" elapsed="0.000365"/>
+<status status="PASS" start="2025-08-07T18:26:55.466234" elapsed="0.000363"/>
 </kw>
-<kw name="Créer Produit" owner="keywords">
+<kw name="Créer Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.339900" level="INFO">${result} = InsertOneResult(ObjectId('6894a01b2a7cc65a8e6e3311'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:26:55.799023" level="INFO">${result} = InsertOneResult(ObjectId('6894efef5801402a2da72965'), acknowledged=True)</msg>
 <var>${result}</var>
-<arg>$COLLECTION.insert_one($product_data)</arg>
+<arg>$CART_COLLECTION.insert_one($cart_data)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.107327" elapsed="0.232707"/>
+<status status="PASS" start="2025-08-07T18:26:55.467663" elapsed="0.331492"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:19.340244" elapsed="0.000082"/>
+<status status="PASS" start="2025-08-07T18:26:55.799266" elapsed="0.000079"/>
 </return>
-<msg time="2025-08-07T12:46:19.340587" level="INFO">${result} = InsertOneResult(ObjectId('6894a01b2a7cc65a8e6e3311'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:26:55.799598" level="INFO">${result} = InsertOneResult(ObjectId('6894efef5801402a2da72965'), acknowledged=True)</msg>
 <var>${result}</var>
-<arg>&amp;{VALID_PRODUCT_DATA}</arg>
-<doc>Créer un produit dans MongoDB</doc>
-<status status="PASS" start="2025-08-07T12:46:19.106510" elapsed="0.234124"/>
+<arg>&amp;{VALID_CART_DATA}</arg>
+<doc>Créer un panier dans MongoDB</doc>
+<status status="PASS" start="2025-08-07T18:26:55.466931" elapsed="0.332717"/>
 </kw>
 <kw name="Should Not Be Equal" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.341909" level="INFO">Argument types are:
+<msg time="2025-08-07T18:26:55.801155" level="INFO">Argument types are:
 &lt;class 'bson.objectid.ObjectId'&gt;
 &lt;class 'NoneType'&gt;</msg>
 <arg>${result.inserted_id}</arg>
 <arg>${None}</arg>
 <doc>Fails if the given objects are equal.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.340900" elapsed="0.001120"/>
+<status status="PASS" start="2025-08-07T18:26:55.799918" elapsed="0.001341"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.342412" level="INFO">CREATE PASSANT - Produit créé avec succès</msg>
-<arg>CREATE PASSANT - Produit créé avec succès</arg>
+<msg time="2025-08-07T18:26:55.801668" level="INFO">CREATE CART PASSANT - Panier créé avec succès</msg>
+<arg>CREATE CART PASSANT - Panier créé avec succès</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.342257" elapsed="0.000230"/>
+<status status="PASS" start="2025-08-07T18:26:55.801496" elapsed="0.000235"/>
 </kw>
-<doc>Test de création réussie d'un produit</doc>
+<doc>Test de création réussie d'un panier</doc>
+<tag>cart</tag>
 <tag>create</tag>
 <tag>positive</tag>
-<status status="PASS" start="2025-08-07T12:46:16.613134" elapsed="2.729604"/>
+<status status="PASS" start="2025-08-07T18:26:51.096519" elapsed="4.705400"/>
 </test>
-<test id="s1-t2" name="CREATE - Scénario Non Passant 1 - Données Invalides" line="29">
+<test id="s1-t2" name="CREATE - Scénario Non Passant 1 - UserId Invalide" line="27">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.343687" level="INFO">=== TEST CREATE NON PASSANT 1 ===</msg>
-<arg>=== TEST CREATE NON PASSANT 1 ===</arg>
+<msg time="2025-08-07T18:26:55.802874" level="INFO">=== TEST CREATE CART NON PASSANT 1 ===</msg>
+<arg>=== TEST CREATE CART NON PASSANT 1 ===</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.343545" elapsed="0.000208"/>
+<status status="PASS" start="2025-08-07T18:26:55.802729" elapsed="0.000215"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.345400" level="INFO">&amp;{données_invalides} = { id=1000 | title= | price=prix_invalide | category=electronics }</msg>
+<msg time="2025-08-07T18:26:55.804948" level="INFO">&amp;{données_invalides} = { id=10000 | userId=-1 | date=2024-01-01 | products=[{'productId': 1, 'quantity': 2}, {'productId': 5, 'quantity': 1}] }</msg>
 <var>&amp;{données_invalides}</var>
-<arg>id=${TEST_PRODUCT_ID + 1}</arg>
-<arg>title=${EMPTY}</arg>
-<arg>price=prix_invalide</arg>
-<arg>category=electronics</arg>
+<arg>id=${TEST_CART_ID + 1}</arg>
+<arg>userId=${INVALID_USER_ID_FOR_CART}</arg>
+<arg>date=2024-01-01</arg>
+<arg>products=${VALID_CART_DATA['products']}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.343934" elapsed="0.001510"/>
+<status status="PASS" start="2025-08-07T18:26:55.803137" elapsed="0.001858"/>
 </kw>
 <try>
 <branch type="TRY">
-<kw name="Créer Produit" owner="keywords">
+<kw name="Créer Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.589488" level="INFO">${result} = InsertOneResult(ObjectId('6894a01b2a7cc65a8e6e3312'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:26:56.084100" level="INFO">${result} = InsertOneResult(ObjectId('6894efef5801402a2da72966'), acknowledged=True)</msg>
 <var>${result}</var>
-<arg>$COLLECTION.insert_one($product_data)</arg>
+<arg>$CART_COLLECTION.insert_one($cart_data)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.346397" elapsed="0.243157"/>
+<status status="PASS" start="2025-08-07T18:26:55.805901" elapsed="0.278319"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:19.589658" elapsed="0.000064"/>
+<status status="PASS" start="2025-08-07T18:26:56.084385" elapsed="0.000066"/>
 </return>
-<msg time="2025-08-07T12:46:19.589971" level="INFO">${result} = InsertOneResult(ObjectId('6894a01b2a7cc65a8e6e3312'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:26:56.084690" level="INFO">${result} = InsertOneResult(ObjectId('6894efef5801402a2da72966'), acknowledged=True)</msg>
 <var>${result}</var>
 <arg>&amp;{données_invalides}</arg>
-<doc>Créer un produit dans MongoDB</doc>
-<status status="PASS" start="2025-08-07T12:46:19.345940" elapsed="0.244080"/>
+<doc>Créer un panier dans MongoDB</doc>
+<status status="PASS" start="2025-08-07T18:26:55.805510" elapsed="0.279229"/>
 </kw>
-<kw name="Lire Produit" owner="keywords">
+<kw name="Lire Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.821713" level="INFO">${product} = {'_id': ObjectId('6894a01b2a7cc65a8e6e3312'), 'id': 1000, 'title': '', 'price': 'prix_invalide', 'category': 'electronics'}</msg>
-<var>${product}</var>
-<arg>$COLLECTION.find_one({"id": ${product_id}})</arg>
+<msg time="2025-08-07T18:26:56.688604" level="INFO">${cart} = {'_id': ObjectId('6894efef5801402a2da72966'), 'id': 10000, 'userId': -1, 'date': '2024-01-01', 'products': [{'productId': 1, 'quantity': 2}, {'productId': 5, 'quantity': 1}]}</msg>
+<var>${cart}</var>
+<arg>$CART_COLLECTION.find_one({"id": ${cart_id}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.591481" elapsed="0.230331"/>
+<status status="PASS" start="2025-08-07T18:26:56.086524" elapsed="0.602132"/>
 </kw>
 <return>
-<value>${product}</value>
-<status status="PASS" start="2025-08-07T12:46:19.821982" elapsed="0.000060"/>
+<value>${cart}</value>
+<status status="PASS" start="2025-08-07T18:26:56.688733" elapsed="0.000045"/>
 </return>
-<msg time="2025-08-07T12:46:19.822288" level="INFO">${produit} = {'_id': ObjectId('6894a01b2a7cc65a8e6e3312'), 'id': 1000, 'title': '', 'price': 'prix_invalide', 'category': 'electronics'}</msg>
-<var>${produit}</var>
-<arg>${TEST_PRODUCT_ID + 1}</arg>
-<doc>Lire un produit par ID</doc>
-<status status="PASS" start="2025-08-07T12:46:19.590299" elapsed="0.232035"/>
+<msg time="2025-08-07T18:26:56.688953" level="INFO">${cart} = {'_id': ObjectId('6894efef5801402a2da72966'), 'id': 10000, 'userId': -1, 'date': '2024-01-01', 'products': [{'productId': 1, 'quantity': 2}, {'productId': 5, 'quantity': 1}]}</msg>
+<var>${cart}</var>
+<arg>${TEST_CART_ID + 1}</arg>
+<doc>Lire un panier par ID</doc>
+<status status="PASS" start="2025-08-07T18:26:56.085027" elapsed="0.603962"/>
 </kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${produit['title']}</arg>
-<arg>${EMPTY}</arg>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${cart['userId']}</arg>
+<arg>${INVALID_USER_ID_FOR_CART}</arg>
 <arg>Validation MongoDB pas stricte</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.822527" elapsed="0.001605"/>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-07T18:26:56.689124" elapsed="0.000910"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.824494" level="INFO">️ MongoDB a accepté les données invalides</msg>
-<arg>️ MongoDB a accepté les données invalides</arg>
+<msg time="2025-08-07T18:26:56.690277" level="INFO">MongoDB a accepté l'userId invalide</msg>
+<arg>MongoDB a accepté l'userId invalide</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.824321" elapsed="0.000238"/>
+<status status="PASS" start="2025-08-07T18:26:56.690169" elapsed="0.000163"/>
 </kw>
-<status status="PASS" start="2025-08-07T12:46:19.345740" elapsed="0.478868"/>
+<status status="PASS" start="2025-08-07T18:26:55.805329" elapsed="0.885045"/>
 </branch>
 <branch type="EXCEPT">
 <kw name="Log" owner="BuiltIn">
-<arg>Données invalides rejetées comme attendu</arg>
+<arg>UserId invalide rejeté comme attendu</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-07T12:46:19.824812" elapsed="0.000029"/>
+<status status="NOT RUN" start="2025-08-07T18:26:56.690556" elapsed="0.000026"/>
 </kw>
-<status status="NOT RUN" start="2025-08-07T12:46:19.824686" elapsed="0.000201"/>
+<status status="NOT RUN" start="2025-08-07T18:26:56.690441" elapsed="0.000182"/>
 </branch>
-<status status="PASS" start="2025-08-07T12:46:19.345673" elapsed="0.479262"/>
+<status status="PASS" start="2025-08-07T18:26:55.805270" elapsed="0.885394"/>
 </try>
-<doc>Test d'échec avec des données invalides</doc>
+<doc>Test d'échec avec userId invalide</doc>
+<tag>cart</tag>
 <tag>create</tag>
 <tag>negative</tag>
-<status status="PASS" start="2025-08-07T12:46:19.343033" elapsed="0.482097"/>
+<status status="PASS" start="2025-08-07T18:26:55.802214" elapsed="0.888629"/>
 </test>
-<test id="s1-t3" name="CREATE - Scénario Non Passant 2 - ID Dupliqué" line="53">
+<test id="s1-t3" name="CREATE - Scénario Non Passant 2 - Liste Produits Vide" line="48">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:19.825997" level="INFO">=== TEST CREATE NON PASSANT 2 ===</msg>
-<arg>=== TEST CREATE NON PASSANT 2 ===</arg>
+<msg time="2025-08-07T18:26:56.691726" level="INFO">=== TEST CREATE CART NON PASSANT 2 ===</msg>
+<arg>=== TEST CREATE CART NON PASSANT 2 ===</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.825861" elapsed="0.000198"/>
-</kw>
-<kw name="Créer Produit" owner="keywords">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.053565" level="INFO">${result} = InsertOneResult(ObjectId('6894a01b2a7cc65a8e6e3313'), acknowledged=True)</msg>
-<var>${result}</var>
-<arg>$COLLECTION.insert_one($product_data)</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:19.826764" elapsed="0.226902"/>
-</kw>
-<return>
-<value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:20.053827" elapsed="0.000066"/>
-</return>
-<msg time="2025-08-07T12:46:20.054137" level="INFO">${result1} = InsertOneResult(ObjectId('6894a01b2a7cc65a8e6e3313'), acknowledged=True)</msg>
-<var>${result1}</var>
-<arg>&amp;{VALID_PRODUCT_DATA}</arg>
-<doc>Créer un produit dans MongoDB</doc>
-<status status="PASS" start="2025-08-07T12:46:19.826298" elapsed="0.227885"/>
-</kw>
-<kw name="Should Not Be Equal" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.055393" level="INFO">Argument types are:
-&lt;class 'bson.objectid.ObjectId'&gt;
-&lt;class 'NoneType'&gt;</msg>
-<arg>${result1.inserted_id}</arg>
-<arg>${None}</arg>
-<doc>Fails if the given objects are equal.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.054452" elapsed="0.001042"/>
+<status status="PASS" start="2025-08-07T18:26:56.691587" elapsed="0.000210"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.056271" level="INFO">&amp;{produit_dupliqué} = { id=999 | title=Produit Dupliqué | price=99.99 | category=electronics }</msg>
-<var>&amp;{produit_dupliqué}</var>
-<arg>id=${TEST_PRODUCT_ID}</arg>
-<arg>title=Produit Dupliqué</arg>
-<arg>price=99.99</arg>
-<arg>category=electronics</arg>
+<msg time="2025-08-07T18:26:56.692959" level="INFO">&amp;{panier_vide} = { id=10001 | userId=999 | date=2024-01-01 | products=[] }</msg>
+<var>&amp;{panier_vide}</var>
+<arg>id=${TEST_CART_ID + 2}</arg>
+<arg>userId=999</arg>
+<arg>date=2024-01-01</arg>
+<arg>products=${EMPTY_PRODUCTS_LIST}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.055740" elapsed="0.000574"/>
-</kw>
-<kw name="Créer Produit" owner="keywords">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.293637" level="INFO">${result} = InsertOneResult(ObjectId('6894a01c2a7cc65a8e6e3314'), acknowledged=True)</msg>
-<var>${result}</var>
-<arg>$COLLECTION.insert_one($product_data)</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.057008" elapsed="0.236731"/>
-</kw>
-<return>
-<value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:20.293901" elapsed="0.000064"/>
-</return>
-<msg time="2025-08-07T12:46:20.294204" level="INFO">${result2} = InsertOneResult(ObjectId('6894a01c2a7cc65a8e6e3314'), acknowledged=True)</msg>
-<var>${result2}</var>
-<arg>&amp;{produit_dupliqué}</arg>
-<doc>Créer un produit dans MongoDB</doc>
-<status status="PASS" start="2025-08-07T12:46:20.056586" elapsed="0.237664"/>
-</kw>
-<kw name="Compter Produits" owner="keywords">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.523700" level="INFO">${count} = 3</msg>
-<var>${count}</var>
-<arg>$COLLECTION.count_documents({"id": ${product_id}})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.295075" elapsed="0.228691"/>
-</kw>
-<return>
-<value>${count}</value>
-<status status="PASS" start="2025-08-07T12:46:20.523899" elapsed="0.000089"/>
-</return>
-<msg time="2025-08-07T12:46:20.524272" level="INFO">${count_final} = 3</msg>
-<var>${count_final}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
-<doc>Compter les produits avec cet ID</doc>
-<status status="PASS" start="2025-08-07T12:46:20.294610" elapsed="0.229707"/>
-</kw>
-<if>
-<branch type="IF" condition="${count_final} &gt; 1">
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.525077" level="INFO">MongoDB a autorisé les ID dupliqués (comportement par défaut)</msg>
-<arg>MongoDB a autorisé les ID dupliqués (comportement par défaut)</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.524906" elapsed="0.000253"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.525587" level="INFO">Nombre de produits avec ID 999: 3</msg>
-<arg>Nombre de produits avec ID ${TEST_PRODUCT_ID}: ${count_final}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.525333" elapsed="0.000337"/>
-</kw>
-<status status="PASS" start="2025-08-07T12:46:20.524545" elapsed="0.001185"/>
-</branch>
-<branch type="ELSE">
-<kw name="Log" owner="BuiltIn">
-<arg>Duplication bloquée par une contrainte</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-07T12:46:20.525951" elapsed="0.000035"/>
-</kw>
-<status status="NOT RUN" start="2025-08-07T12:46:20.525791" elapsed="0.000361"/>
-</branch>
-<status status="PASS" start="2025-08-07T12:46:20.524498" elapsed="0.001709"/>
-</if>
-<doc>Test d'échec avec ID dupliqué</doc>
-<tag>create</tag>
-<tag>negative</tag>
-<status status="PASS" start="2025-08-07T12:46:19.825403" elapsed="0.701015"/>
-</test>
-<test id="s1-t4" name="READ - Scénario Passant - Lire Produit Existant" line="83">
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.527319" level="INFO">=== TEST READ PASSANT ===</msg>
-<arg>=== TEST READ PASSANT ===</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.527182" elapsed="0.000204"/>
-</kw>
-<kw name="Créer Produit" owner="keywords">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.763677" level="INFO">${result} = InsertOneResult(ObjectId('6894a01c2a7cc65a8e6e3315'), acknowledged=True)</msg>
-<var>${result}</var>
-<arg>$COLLECTION.insert_one($product_data)</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.528091" elapsed="0.235723"/>
-</kw>
-<return>
-<value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:20.763925" elapsed="0.000063"/>
-</return>
-<msg time="2025-08-07T12:46:20.764231" level="INFO">${result} = InsertOneResult(ObjectId('6894a01c2a7cc65a8e6e3315'), acknowledged=True)</msg>
-<var>${result}</var>
-<arg>&amp;{VALID_PRODUCT_DATA}</arg>
-<doc>Créer un produit dans MongoDB</doc>
-<status status="PASS" start="2025-08-07T12:46:20.527627" elapsed="0.236650"/>
-</kw>
-<kw name="Lire Produit" owner="keywords">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.997719" level="INFO">${product} = {'_id': ObjectId('6894a01b2a7cc65a8e6e3311'), 'id': 999, 'title': 'Test Product Robot Framework', 'price': 29.99, 'description': 'Un produit de test créé par Robot Framework', 'category': 'electronics...</msg>
-<var>${product}</var>
-<arg>$COLLECTION.find_one({"id": ${product_id}})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.765123" elapsed="0.232703"/>
-</kw>
-<return>
-<value>${product}</value>
-<status status="PASS" start="2025-08-07T12:46:20.997991" elapsed="0.000080"/>
-</return>
-<msg time="2025-08-07T12:46:20.998322" level="INFO">${produit} = {'_id': ObjectId('6894a01b2a7cc65a8e6e3311'), 'id': 999, 'title': 'Test Product Robot Framework', 'price': 29.99, 'description': 'Un produit de test créé par Robot Framework', 'category': 'electronics...</msg>
-<var>${produit}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
-<doc>Lire un produit par ID</doc>
-<status status="PASS" start="2025-08-07T12:46:20.764629" elapsed="0.233742"/>
-</kw>
-<kw name="Should Not Be Equal" owner="BuiltIn">
-<msg time="2025-08-07T12:46:20.998915" level="INFO">Argument types are:
-&lt;class 'dict'&gt;
-&lt;class 'NoneType'&gt;</msg>
-<arg>${produit}</arg>
-<arg>${None}</arg>
-<doc>Fails if the given objects are equal.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.998644" elapsed="0.000360"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${produit['title']}</arg>
-<arg>${VALID_PRODUCT_DATA['title']}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-07T12:46:20.999220" elapsed="0.001457"/>
-</kw>
-<kw name="Should Be Equal As Numbers" owner="BuiltIn">
-<arg>${produit['price']}</arg>
-<arg>${VALID_PRODUCT_DATA['price']}</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.000860" elapsed="0.001171"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:21.002894" level="INFO">READ PASSANT - Produit lu: Test Product Robot Framework</msg>
-<arg>READ PASSANT - Produit lu: ${produit['title']}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.002225" elapsed="0.000735"/>
-</kw>
-<doc>Test de lecture réussie</doc>
-<tag>positive</tag>
-<tag>read</tag>
-<status status="PASS" start="2025-08-07T12:46:20.526728" elapsed="0.476407"/>
-</test>
-<test id="s1-t5" name="READ - Scénario Non Passant 1 - ID Inexistant" line="102">
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:21.004037" level="INFO">=== TEST READ NON PASSANT 1 ===</msg>
-<arg>=== TEST READ NON PASSANT 1 ===</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.003871" elapsed="0.000221"/>
-</kw>
-<kw name="Lire Produit" owner="keywords">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:21.241394" level="INFO">${product} = None</msg>
-<var>${product}</var>
-<arg>$COLLECTION.find_one({"id": ${product_id}})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.005167" elapsed="0.236328"/>
-</kw>
-<return>
-<value>${product}</value>
-<status status="PASS" start="2025-08-07T12:46:21.241651" elapsed="0.000089"/>
-</return>
-<msg time="2025-08-07T12:46:21.242014" level="INFO">${produit} = None</msg>
-<var>${produit}</var>
-<arg>${INVALID_PRODUCT_ID}</arg>
-<doc>Lire un produit par ID</doc>
-<status status="PASS" start="2025-08-07T12:46:21.004313" elapsed="0.237747"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${produit}</arg>
-<arg>${None}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.242326" elapsed="0.000323"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:21.243014" level="INFO">READ NON PASSANT 1 - Aucun produit trouvé comme attendu</msg>
-<arg>READ NON PASSANT 1 - Aucun produit trouvé comme attendu</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.242867" elapsed="0.000222"/>
-</kw>
-<doc>Test de lecture avec ID inexistant</doc>
-<tag>negative</tag>
-<tag>read</tag>
-<status status="PASS" start="2025-08-07T12:46:21.003391" elapsed="0.239905"/>
-</test>
-<test id="s1-t6" name="READ - Scénario Non Passant 2 - Format ID Invalide" line="116">
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:21.244347" level="INFO">=== TEST READ NON PASSANT 2 ===</msg>
-<arg>=== TEST READ NON PASSANT 2 ===</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.244173" elapsed="0.000236"/>
+<status status="PASS" start="2025-08-07T18:26:56.691957" elapsed="0.001039"/>
 </kw>
 <try>
 <branch type="TRY">
-<kw name="Lire Produit" owner="keywords">
+<kw name="Créer Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:21.473084" level="INFO">${product} = None</msg>
-<var>${product}</var>
-<arg>$COLLECTION.find_one({"id": ${product_id}})</arg>
+<msg time="2025-08-07T18:26:57.156976" level="INFO">${result} = InsertOneResult(ObjectId('6894eff05801402a2da72967'), acknowledged=True)</msg>
+<var>${result}</var>
+<arg>$CART_COLLECTION.insert_one($cart_data)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.245069" elapsed="0.228140"/>
+<status status="PASS" start="2025-08-07T18:26:56.693695" elapsed="0.463382"/>
 </kw>
 <return>
-<value>${product}</value>
-<status status="PASS" start="2025-08-07T12:46:21.473327" elapsed="0.000064"/>
+<value>${result}</value>
+<status status="PASS" start="2025-08-07T18:26:57.157229" elapsed="0.000065"/>
 </return>
-<msg time="2025-08-07T12:46:21.473631" level="INFO">${produit} = None</msg>
-<var>${produit}</var>
-<arg>"abc123"</arg>
-<doc>Lire un produit par ID</doc>
-<status status="PASS" start="2025-08-07T12:46:21.244756" elapsed="0.228920"/>
+<msg time="2025-08-07T18:26:57.157534" level="INFO">${result} = InsertOneResult(ObjectId('6894eff05801402a2da72967'), acknowledged=True)</msg>
+<var>${result}</var>
+<arg>&amp;{panier_vide}</arg>
+<doc>Créer un panier dans MongoDB</doc>
+<status status="PASS" start="2025-08-07T18:26:56.693332" elapsed="0.464252"/>
+</kw>
+<kw name="Lire Panier" owner="cart_keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-07T18:26:57.442858" level="INFO">${cart} = {'_id': ObjectId('6894eff05801402a2da72967'), 'id': 10001, 'userId': '999', 'date': '2024-01-01', 'products': []}</msg>
+<var>${cart}</var>
+<arg>$CART_COLLECTION.find_one({"id": ${cart_id}})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-07T18:26:57.159269" elapsed="0.283699"/>
+</kw>
+<return>
+<value>${cart}</value>
+<status status="PASS" start="2025-08-07T18:26:57.443071" elapsed="0.000064"/>
+</return>
+<msg time="2025-08-07T18:26:57.443376" level="INFO">${cart} = {'_id': ObjectId('6894eff05801402a2da72967'), 'id': 10001, 'userId': '999', 'date': '2024-01-01', 'products': []}</msg>
+<var>${cart}</var>
+<arg>${TEST_CART_ID + 2}</arg>
+<doc>Lire un panier par ID</doc>
+<status status="PASS" start="2025-08-07T18:26:57.157881" elapsed="0.285543"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-08-07T18:26:57.444725" level="INFO">Length is 0.</msg>
+<msg time="2025-08-07T18:26:57.444872" level="INFO">${products_count} = 0</msg>
+<var>${products_count}</var>
+<arg>${cart['products']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-08-07T18:26:57.443629" elapsed="0.001287"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-08-07T18:26:57.445370" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${products_count}</arg>
+<arg>0</arg>
+<arg>Liste vide acceptée</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-07T18:26:57.445087" elapsed="0.000409"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-07T18:26:57.445756" level="INFO">MongoDB a accepté la liste de produits vide</msg>
+<arg>MongoDB a accepté la liste de produits vide</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-07T18:26:57.445638" elapsed="0.000179"/>
+</kw>
+<status status="PASS" start="2025-08-07T18:26:56.693158" elapsed="0.752707"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Log" owner="BuiltIn">
+<arg>Liste vide rejetée comme attendu</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-08-07T18:26:57.446049" elapsed="0.000029"/>
+</kw>
+<status status="NOT RUN" start="2025-08-07T18:26:57.445933" elapsed="0.000190"/>
+</branch>
+<status status="PASS" start="2025-08-07T18:26:56.693111" elapsed="0.753056"/>
+</try>
+<doc>Test d'échec avec liste de produits vide</doc>
+<tag>cart</tag>
+<tag>create</tag>
+<tag>negative</tag>
+<status status="PASS" start="2025-08-07T18:26:56.691088" elapsed="0.755262"/>
+</test>
+<test id="s1-t4" name="READ - Scénario Passant - Lire Panier Existant" line="70">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-07T18:26:57.447318" level="INFO">=== TEST READ CART PASSANT ===</msg>
+<arg>=== TEST READ CART PASSANT ===</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-07T18:26:57.447178" elapsed="0.000215"/>
+</kw>
+<kw name="Créer Panier" owner="cart_keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-07T18:26:57.810703" level="INFO">${result} = InsertOneResult(ObjectId('6894eff15801402a2da72968'), acknowledged=True)</msg>
+<var>${result}</var>
+<arg>$CART_COLLECTION.insert_one($cart_data)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-07T18:26:57.448069" elapsed="0.362738"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2025-08-07T18:26:57.810962" elapsed="0.000065"/>
+</return>
+<msg time="2025-08-07T18:26:57.811267" level="INFO">${result} = InsertOneResult(ObjectId('6894eff15801402a2da72968'), acknowledged=True)</msg>
+<var>${result}</var>
+<arg>&amp;{VALID_CART_DATA}</arg>
+<doc>Créer un panier dans MongoDB</doc>
+<status status="PASS" start="2025-08-07T18:26:57.447640" elapsed="0.363675"/>
+</kw>
+<kw name="Lire Panier" owner="cart_keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.116155" level="INFO">${cart} = {'_id': ObjectId('6894efef5801402a2da72965'), 'id': 9999, 'userId': 999, 'date': '2024-01-01', 'products': [{'productId': 1, 'quantity': 2}, {'productId': 5, 'quantity': 1}]}</msg>
+<var>${cart}</var>
+<arg>$CART_COLLECTION.find_one({"id": ${cart_id}})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-07T18:26:57.812155" elapsed="0.304138"/>
+</kw>
+<return>
+<value>${cart}</value>
+<status status="PASS" start="2025-08-07T18:26:58.116402" elapsed="0.000064"/>
+</return>
+<msg time="2025-08-07T18:26:58.116711" level="INFO">${cart} = {'_id': ObjectId('6894efef5801402a2da72965'), 'id': 9999, 'userId': 999, 'date': '2024-01-01', 'products': [{'productId': 1, 'quantity': 2}, {'productId': 5, 'quantity': 1}]}</msg>
+<var>${cart}</var>
+<arg>${TEST_CART_ID}</arg>
+<doc>Lire un panier par ID</doc>
+<status status="PASS" start="2025-08-07T18:26:57.811676" elapsed="0.305084"/>
+</kw>
+<kw name="Should Not Be Equal" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.117297" level="INFO">Argument types are:
+&lt;class 'dict'&gt;
+&lt;class 'NoneType'&gt;</msg>
+<arg>${cart}</arg>
+<arg>${None}</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.117023" elapsed="0.000366"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${cart['userId']}</arg>
+<arg>${VALID_CART_DATA['userId']}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.117609" elapsed="0.001782"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${cart['date']}</arg>
+<arg>${VALID_CART_DATA['date']}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.119578" elapsed="0.001468"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.122043" level="INFO">Length is 2.</msg>
+<msg time="2025-08-07T18:26:58.122166" level="INFO">${products_count} = 2</msg>
+<var>${products_count}</var>
+<arg>${cart['products']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.121234" elapsed="0.000968"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.122991" level="INFO">Length is 2.</msg>
+<msg time="2025-08-07T18:26:58.123088" level="INFO">${expected_count} = 2</msg>
+<var>${expected_count}</var>
+<arg>${VALID_CART_DATA['products']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.122384" elapsed="0.000735"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${products_count}</arg>
+<arg>${expected_count}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.123274" elapsed="0.000225"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.123866" level="INFO">READ CART PASSANT - Panier lu avec 2 produits</msg>
+<arg>READ CART PASSANT - Panier lu avec ${products_count} produits</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.123713" elapsed="0.000214"/>
+</kw>
+<doc>Test de lecture réussie</doc>
+<tag>cart</tag>
+<tag>positive</tag>
+<tag>read</tag>
+<status status="PASS" start="2025-08-07T18:26:57.446706" elapsed="0.677365"/>
+</test>
+<test id="s1-t5" name="READ - Scénario Non Passant 1 - ID Inexistant" line="90">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.124819" level="INFO">=== TEST READ CART NON PASSANT 1 ===</msg>
+<arg>=== TEST READ CART NON PASSANT 1 ===</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.124701" elapsed="0.000174"/>
+</kw>
+<kw name="Lire Panier" owner="cart_keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.356031" level="INFO">${cart} = None</msg>
+<var>${cart}</var>
+<arg>$CART_COLLECTION.find_one({"id": ${cart_id}})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.125393" elapsed="0.230738"/>
+</kw>
+<return>
+<value>${cart}</value>
+<status status="PASS" start="2025-08-07T18:26:58.356301" elapsed="0.000064"/>
+</return>
+<msg time="2025-08-07T18:26:58.356603" level="INFO">${cart} = None</msg>
+<var>${cart}</var>
+<arg>${INVALID_CART_ID}</arg>
+<doc>Lire un panier par ID</doc>
+<status status="PASS" start="2025-08-07T18:26:58.125089" elapsed="0.231563"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
-<arg>${produit}</arg>
+<arg>${cart}</arg>
+<arg>${None}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.356929" elapsed="0.000328"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.357631" level="INFO">READ CART NON PASSANT 1 - Aucun panier trouvé comme attendu</msg>
+<arg>READ CART NON PASSANT 1 - Aucun panier trouvé comme attendu</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.357480" elapsed="0.000226"/>
+</kw>
+<doc>Test de lecture avec ID inexistant</doc>
+<tag>cart</tag>
+<tag>negative</tag>
+<tag>read</tag>
+<status status="PASS" start="2025-08-07T18:26:58.124291" elapsed="0.233626"/>
+</test>
+<test id="s1-t6" name="READ - Scénario Non Passant 2 - Format ID Invalide" line="102">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.358965" level="INFO">=== TEST READ CART NON PASSANT 2 ===</msg>
+<arg>=== TEST READ CART NON PASSANT 2 ===</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-07T18:26:58.358829" elapsed="0.000199"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Lire Panier" owner="cart_keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.360339" level="FAIL">Evaluating expression '$CART_COLLECTION.find_one({"id": abc123})' failed: NameError: name 'abc123' is not defined nor importable as module</msg>
+<var>${cart}</var>
+<arg>$CART_COLLECTION.find_one({"id": ${cart_id}})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="FAIL" start="2025-08-07T18:26:58.359725" elapsed="0.000908">Evaluating expression '$CART_COLLECTION.find_one({"id": abc123})' failed: NameError: name 'abc123' is not defined nor importable as module</status>
+</kw>
+<return>
+<value>${cart}</value>
+<status status="NOT RUN" start="2025-08-07T18:26:58.360725" elapsed="0.000024"/>
+</return>
+<var>${cart}</var>
+<arg>${NON_NUMERIC_CART_ID}</arg>
+<doc>Lire un panier par ID</doc>
+<status status="FAIL" start="2025-08-07T18:26:58.359371" elapsed="0.001519">Evaluating expression '$CART_COLLECTION.find_one({"id": abc123})' failed: NameError: name 'abc123' is not defined nor importable as module</status>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${cart}</arg>
 <arg>${None}</arg>
 <arg>Format invalide mais pas d'erreur</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.473870" elapsed="0.000384"/>
+<status status="NOT RUN" start="2025-08-07T18:26:58.361147" elapsed="0.000034"/>
 </kw>
-<status status="PASS" start="2025-08-07T12:46:21.244575" elapsed="0.229755"/>
+<status status="FAIL" start="2025-08-07T18:26:58.359184" elapsed="0.002078">Evaluating expression '$CART_COLLECTION.find_one({"id": abc123})' failed: NameError: name 'abc123' is not defined nor importable as module</status>
 </branch>
 <branch type="EXCEPT">
 <kw name="Log" owner="BuiltIn">
+<msg time="2025-08-07T18:26:58.361569" level="INFO">Format ID invalide rejeté</msg>
 <arg>Format ID invalide rejeté</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-07T12:46:21.474564" elapsed="0.000036"/>
+<status status="PASS" start="2025-08-07T18:26:58.361445" elapsed="0.000188"/>
 </kw>
-<status status="NOT RUN" start="2025-08-07T12:46:21.474417" elapsed="0.000240"/>
+<status status="PASS" start="2025-08-07T18:26:58.361332" elapsed="0.000348"/>
 </branch>
-<status status="PASS" start="2025-08-07T12:46:21.244522" elapsed="0.230199"/>
+<status status="PASS" start="2025-08-07T18:26:58.359138" elapsed="0.002587"/>
 </try>
 <doc>Test avec format d'ID invalide</doc>
+<tag>cart</tag>
 <tag>negative</tag>
 <tag>read</tag>
-<status status="PASS" start="2025-08-07T12:46:21.243604" elapsed="0.231349"/>
+<status status="PASS" start="2025-08-07T18:26:58.358239" elapsed="0.003647"/>
 </test>
-<test id="s1-t7" name="UPDATE - Scénario Passant - Modifier Produit" line="130">
+<test id="s1-t7" name="UPDATE - Scénario Passant - Modifier Panier" line="132">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:21.476073" level="INFO">=== TEST UPDATE PASSANT ===</msg>
-<arg>=== TEST UPDATE PASSANT ===</arg>
+<msg time="2025-08-07T18:26:58.362668" level="INFO">=== TEST UPDATE CART PASSANT ===</msg>
+<arg>=== TEST UPDATE CART PASSANT ===</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.475933" elapsed="0.000205"/>
+<status status="PASS" start="2025-08-07T18:26:58.362551" elapsed="0.000171"/>
 </kw>
-<kw name="Créer Produit" owner="keywords">
+<kw name="Créer Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:21.723909" level="INFO">${result} = InsertOneResult(ObjectId('6894a01d2a7cc65a8e6e3316'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:26:58.627615" level="INFO">${result} = InsertOneResult(ObjectId('6894eff25801402a2da72969'), acknowledged=True)</msg>
 <var>${result}</var>
-<arg>$COLLECTION.insert_one($product_data)</arg>
+<arg>$CART_COLLECTION.insert_one($cart_data)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.476845" elapsed="0.247167"/>
+<status status="PASS" start="2025-08-07T18:26:58.363297" elapsed="0.264425"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:21.724165" elapsed="0.000063"/>
+<status status="PASS" start="2025-08-07T18:26:58.627876" elapsed="0.000106"/>
 </return>
-<msg time="2025-08-07T12:46:21.724473" level="INFO">${result} = InsertOneResult(ObjectId('6894a01d2a7cc65a8e6e3316'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:26:58.628223" level="INFO">${result} = InsertOneResult(ObjectId('6894eff25801402a2da72969'), acknowledged=True)</msg>
 <var>${result}</var>
-<arg>&amp;{VALID_PRODUCT_DATA}</arg>
-<doc>Créer un produit dans MongoDB</doc>
-<status status="PASS" start="2025-08-07T12:46:21.476381" elapsed="0.248138"/>
+<arg>&amp;{VALID_CART_DATA}</arg>
+<doc>Créer un panier dans MongoDB</doc>
+<status status="PASS" start="2025-08-07T18:26:58.362928" elapsed="0.265343"/>
 </kw>
-<kw name="Modifier Produit" owner="keywords">
+<kw name="Modifier Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:21.972623" level="INFO">${result} = UpdateResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570782, 1), 't': 64}, 'nModified': 1, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
+<msg time="2025-08-07T18:26:58.864784" level="INFO">${result} = UpdateResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591218, 5), 't': 64}, 'nModified': 1, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
 <var>${result}</var>
-<arg>$COLLECTION.update_one({"id": ${product_id}}, {"$set": $update_data})</arg>
+<arg>$CART_COLLECTION.update_one({"id": ${cart_id}}, {"$set": $update_data})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.725492" elapsed="0.247235"/>
+<status status="PASS" start="2025-08-07T18:26:58.629264" elapsed="0.235626"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:21.972878" elapsed="0.000064"/>
+<status status="PASS" start="2025-08-07T18:26:58.865052" elapsed="0.000110"/>
 </return>
-<msg time="2025-08-07T12:46:21.973211" level="INFO">${result_update} = UpdateResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570782, 1), 't': 64}, 'nModified': 1, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
+<msg time="2025-08-07T18:26:58.865455" level="INFO">${result_update} = UpdateResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591218, 5), 't': 64}, 'nModified': 1, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
 <var>${result_update}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
-<arg>&amp;{UPDATE_PRODUCT_DATA}</arg>
-<doc>Modifier un produit</doc>
-<status status="PASS" start="2025-08-07T12:46:21.724874" elapsed="0.248386"/>
+<arg>${TEST_CART_ID}</arg>
+<arg>&amp;{UPDATE_CART_DATA}</arg>
+<doc>Modifier un panier</doc>
+<status status="PASS" start="2025-08-07T18:26:58.628624" elapsed="0.236881"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-08-07T12:46:21.974342" level="INFO">Argument types are:
+<msg time="2025-08-07T18:26:58.866714" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${result_update.modified_count}</arg>
 <arg>1</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.973531" elapsed="0.000915"/>
+<status status="PASS" start="2025-08-07T18:26:58.865773" elapsed="0.001043"/>
 </kw>
-<kw name="Lire Produit" owner="keywords">
+<kw name="Lire Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.201629" level="INFO">${product} = {'_id': ObjectId('6894a01b2a7cc65a8e6e3311'), 'id': 999, 'title': 'Test Product UPDATED', 'price': 39.99, 'description': 'Produit mis à jour par Robot Framework', 'category': 'electronics', 'image': '...</msg>
-<var>${product}</var>
-<arg>$COLLECTION.find_one({"id": ${product_id}})</arg>
+<msg time="2025-08-07T18:26:59.100208" level="INFO">${cart} = {'_id': ObjectId('6894efef5801402a2da72965'), 'id': 9999, 'userId': 999, 'date': '2024-01-15', 'products': [{'productId': 1, 'quantity': 3}, {'productId': 10, 'quantity': 1}, {'productId': 15, 'quanti...</msg>
+<var>${cart}</var>
+<arg>$CART_COLLECTION.find_one({"id": ${cart_id}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:21.975204" elapsed="0.226581"/>
+<status status="PASS" start="2025-08-07T18:26:58.867601" elapsed="0.232744"/>
 </kw>
 <return>
-<value>${product}</value>
-<status status="PASS" start="2025-08-07T12:46:22.201895" elapsed="0.000064"/>
+<value>${cart}</value>
+<status status="PASS" start="2025-08-07T18:26:59.100451" elapsed="0.000063"/>
 </return>
-<msg time="2025-08-07T12:46:22.202227" level="INFO">${produit_modifié} = {'_id': ObjectId('6894a01b2a7cc65a8e6e3311'), 'id': 999, 'title': 'Test Product UPDATED', 'price': 39.99, 'description': 'Produit mis à jour par Robot Framework', 'category': 'electronics', 'image': '...</msg>
-<var>${produit_modifié}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
-<doc>Lire un produit par ID</doc>
-<status status="PASS" start="2025-08-07T12:46:21.974765" elapsed="0.227512"/>
+<msg time="2025-08-07T18:26:59.100774" level="INFO">${cart_modifié} = {'_id': ObjectId('6894efef5801402a2da72965'), 'id': 9999, 'userId': 999, 'date': '2024-01-15', 'products': [{'productId': 1, 'quantity': 3}, {'productId': 10, 'quantity': 1}, {'productId': 15, 'quanti...</msg>
+<var>${cart_modifié}</var>
+<arg>${TEST_CART_ID}</arg>
+<doc>Lire un panier par ID</doc>
+<status status="PASS" start="2025-08-07T18:26:58.867143" elapsed="0.233684"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${produit_modifié['title']}</arg>
-<arg>${UPDATE_PRODUCT_DATA['title']}</arg>
+<arg>${cart_modifié['date']}</arg>
+<arg>${UPDATE_CART_DATA['date']}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.202543" elapsed="0.001485"/>
+<status status="PASS" start="2025-08-07T18:26:59.101095" elapsed="0.001886"/>
 </kw>
-<kw name="Should Be Equal As Numbers" owner="BuiltIn">
-<arg>${produit_modifié['price']}</arg>
-<arg>${UPDATE_PRODUCT_DATA['price']}</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.204274" elapsed="0.001146"/>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-08-07T18:26:59.103927" level="INFO">Length is 3.</msg>
+<msg time="2025-08-07T18:26:59.104043" level="INFO">${products_count} = 3</msg>
+<var>${products_count}</var>
+<arg>${cart_modifié['products']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-08-07T18:26:59.103171" elapsed="0.000908"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-08-07T18:26:59.104966" level="INFO">Length is 3.</msg>
+<msg time="2025-08-07T18:26:59.105082" level="INFO">${expected_count} = 3</msg>
+<var>${expected_count}</var>
+<arg>${UPDATE_CART_DATA['products']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-08-07T18:26:59.104263" elapsed="0.000855"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${products_count}</arg>
+<arg>${expected_count}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-07T18:26:59.105300" elapsed="0.000248"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.206258" level="INFO">UPDATE PASSANT - Produit modifié: Test Product UPDATED</msg>
-<arg>UPDATE PASSANT - Produit modifié: ${produit_modifié['title']}</arg>
+<msg time="2025-08-07T18:26:59.105936" level="INFO">UPDATE CART PASSANT - Panier modifié avec 3 produits</msg>
+<arg>UPDATE CART PASSANT - Panier modifié avec ${products_count} produits</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.205616" elapsed="0.000711"/>
+<status status="PASS" start="2025-08-07T18:26:59.105758" elapsed="0.000242"/>
 </kw>
 <doc>Test de modification réussie</doc>
+<tag>cart</tag>
 <tag>positive</tag>
 <tag>update</tag>
-<status status="PASS" start="2025-08-07T12:46:21.475388" elapsed="0.731117"/>
+<status status="PASS" start="2025-08-07T18:26:58.362140" elapsed="0.744026"/>
 </test>
-<test id="s1-t8" name="UPDATE - Scénario Non Passant 1 - ID Inexistant" line="152">
+<test id="s1-t8" name="UPDATE - Scénario Non Passant 1 - ID Inexistant" line="153">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.207493" level="INFO">=== TEST UPDATE NON PASSANT 1 ===</msg>
-<arg>=== TEST UPDATE NON PASSANT 1 ===</arg>
+<msg time="2025-08-07T18:26:59.106956" level="INFO">=== TEST UPDATE CART NON PASSANT 1 ===</msg>
+<arg>=== TEST UPDATE CART NON PASSANT 1 ===</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.207256" elapsed="0.000310"/>
+<status status="PASS" start="2025-08-07T18:26:59.106839" elapsed="0.000171"/>
 </kw>
-<kw name="Modifier Produit" owner="keywords">
+<kw name="Modifier Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.444734" level="INFO">${result} = UpdateResult({'n': 0, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570782, 2), 't': 64}, 'nModified': 0, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
+<msg time="2025-08-07T18:26:59.333388" level="INFO">${result} = UpdateResult({'n': 0, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591219, 1), 't': 64}, 'nModified': 0, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
 <var>${result}</var>
-<arg>$COLLECTION.update_one({"id": ${product_id}}, {"$set": $update_data})</arg>
+<arg>$CART_COLLECTION.update_one({"id": ${cart_id}}, {"$set": $update_data})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.208248" elapsed="0.236617"/>
+<status status="PASS" start="2025-08-07T18:26:59.107631" elapsed="0.225897"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:22.445008" elapsed="0.000062"/>
+<status status="PASS" start="2025-08-07T18:26:59.333762" elapsed="0.000067"/>
 </return>
-<msg time="2025-08-07T12:46:22.445332" level="INFO">${result} = UpdateResult({'n': 0, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570782, 2), 't': 64}, 'nModified': 0, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
+<msg time="2025-08-07T18:26:59.334096" level="INFO">${result} = UpdateResult({'n': 0, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591219, 1), 't': 64}, 'nModified': 0, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
 <var>${result}</var>
-<arg>${INVALID_PRODUCT_ID}</arg>
-<arg>&amp;{UPDATE_PRODUCT_DATA}</arg>
-<doc>Modifier un produit</doc>
-<status status="PASS" start="2025-08-07T12:46:22.207836" elapsed="0.237544"/>
+<arg>${INVALID_CART_ID}</arg>
+<arg>&amp;{UPDATE_CART_DATA}</arg>
+<doc>Modifier un panier</doc>
+<status status="PASS" start="2025-08-07T18:26:59.107222" elapsed="0.226926"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.446518" level="INFO">Argument types are:
+<msg time="2025-08-07T18:26:59.335454" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${result.modified_count}</arg>
 <arg>0</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.445643" elapsed="0.000978"/>
+<status status="PASS" start="2025-08-07T18:26:59.334410" elapsed="0.001149"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.447005" level="INFO">UPDATE NON PASSANT 1 - Aucun document modifié</msg>
-<arg>UPDATE NON PASSANT 1 - Aucun document modifié</arg>
+<msg time="2025-08-07T18:26:59.335950" level="INFO">UPDATE CART NON PASSANT 1 - Aucun document modifié</msg>
+<arg>UPDATE CART NON PASSANT 1 - Aucun document modifié</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.446851" elapsed="0.000231"/>
+<status status="PASS" start="2025-08-07T18:26:59.335795" elapsed="0.000248"/>
 </kw>
 <doc>Test de modification avec ID inexistant</doc>
+<tag>cart</tag>
 <tag>negative</tag>
 <tag>update</tag>
-<status status="PASS" start="2025-08-07T12:46:22.206761" elapsed="0.240534"/>
+<status status="PASS" start="2025-08-07T18:26:59.106425" elapsed="0.229795"/>
 </test>
-<test id="s1-t9" name="UPDATE - Scénario Non Passant 2 - Données Invalides" line="166">
+<test id="s1-t9" name="UPDATE - Scénario Non Passant 2 - Date Invalide" line="165">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.448210" level="INFO">=== TEST UPDATE NON PASSANT 2 ===</msg>
-<arg>=== TEST UPDATE NON PASSANT 2 ===</arg>
+<msg time="2025-08-07T18:26:59.337100" level="INFO">=== TEST UPDATE CART NON PASSANT 2 ===</msg>
+<arg>=== TEST UPDATE CART NON PASSANT 2 ===</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.448074" elapsed="0.000199"/>
+<status status="PASS" start="2025-08-07T18:26:59.336962" elapsed="0.000205"/>
 </kw>
-<kw name="Créer Produit" owner="keywords">
+<kw name="Créer Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.688822" level="INFO">${result} = InsertOneResult(ObjectId('6894a01e2a7cc65a8e6e3317'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:26:59.576930" level="INFO">${result} = InsertOneResult(ObjectId('6894eff35801402a2da7296a'), acknowledged=True)</msg>
 <var>${result}</var>
-<arg>$COLLECTION.insert_one($product_data)</arg>
+<arg>$CART_COLLECTION.insert_one($cart_data)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.448988" elapsed="0.239964"/>
+<status status="PASS" start="2025-08-07T18:26:59.337843" elapsed="0.239196"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:22.689066" elapsed="0.000066"/>
+<status status="PASS" start="2025-08-07T18:26:59.577192" elapsed="0.000064"/>
 </return>
-<msg time="2025-08-07T12:46:22.689384" level="INFO">${result} = InsertOneResult(ObjectId('6894a01e2a7cc65a8e6e3317'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:26:59.577500" level="INFO">${result} = InsertOneResult(ObjectId('6894eff35801402a2da7296a'), acknowledged=True)</msg>
 <var>${result}</var>
-<arg>&amp;{VALID_PRODUCT_DATA}</arg>
-<doc>Créer un produit dans MongoDB</doc>
-<status status="PASS" start="2025-08-07T12:46:22.448516" elapsed="0.240915"/>
+<arg>&amp;{VALID_CART_DATA}</arg>
+<doc>Créer un panier dans MongoDB</doc>
+<status status="PASS" start="2025-08-07T18:26:59.337416" elapsed="0.240132"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.690741" level="INFO">&amp;{update_invalide} = { price=-10.50 | title= }</msg>
+<msg time="2025-08-07T18:26:59.578393" level="INFO">&amp;{update_invalide} = { date=2024/01/01 | products=[] }</msg>
 <var>&amp;{update_invalide}</var>
-<arg>price=-10.50</arg>
-<arg>title=${EMPTY}</arg>
+<arg>date=${INVALID_DATE_FORMAT}</arg>
+<arg>products=${EMPTY_PRODUCTS_LIST}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.689717" elapsed="0.001078"/>
+<status status="PASS" start="2025-08-07T18:26:59.577837" elapsed="0.000609"/>
 </kw>
-<kw name="Modifier Produit" owner="keywords">
+<kw name="Modifier Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.923879" level="INFO">${result} = UpdateResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570783, 1), 't': 64}, 'nModified': 1, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
+<msg time="2025-08-07T18:26:59.808799" level="INFO">${result} = UpdateResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591219, 5), 't': 64}, 'nModified': 1, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
 <var>${result}</var>
-<arg>$COLLECTION.update_one({"id": ${product_id}}, {"$set": $update_data})</arg>
+<arg>$CART_COLLECTION.update_one({"id": ${cart_id}}, {"$set": $update_data})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.691694" elapsed="0.232292"/>
+<status status="PASS" start="2025-08-07T18:26:59.579359" elapsed="0.229547"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:22.924169" elapsed="0.000062"/>
+<status status="PASS" start="2025-08-07T18:26:59.809056" elapsed="0.000063"/>
 </return>
-<msg time="2025-08-07T12:46:22.924498" level="INFO">${result_update} = UpdateResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570783, 1), 't': 64}, 'nModified': 1, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
+<msg time="2025-08-07T18:26:59.809387" level="INFO">${result_update} = UpdateResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591219, 5), 't': 64}, 'nModified': 1, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754...</msg>
 <var>${result_update}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
+<arg>${TEST_CART_ID}</arg>
 <arg>&amp;{update_invalide}</arg>
-<doc>Modifier un produit</doc>
-<status status="PASS" start="2025-08-07T12:46:22.691124" elapsed="0.233424"/>
+<doc>Modifier un panier</doc>
+<status status="PASS" start="2025-08-07T18:26:59.578771" elapsed="0.230667"/>
 </kw>
 <if>
 <branch type="IF" condition="${result_update.modified_count} &gt; 0">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:22.925831" level="INFO">️ MongoDB a accepté les données invalides</msg>
-<arg>️ MongoDB a accepté les données invalides</arg>
+<msg time="2025-08-07T18:26:59.810907" level="INFO">MongoDB a accepté les données invalides</msg>
+<arg>MongoDB a accepté les données invalides</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.925655" elapsed="0.000262"/>
+<status status="PASS" start="2025-08-07T18:26:59.810728" elapsed="0.000264"/>
 </kw>
-<kw name="Lire Produit" owner="keywords">
+<kw name="Lire Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:23.176863" level="INFO">${product} = {'_id': ObjectId('6894a01b2a7cc65a8e6e3311'), 'id': 999, 'title': '', 'price': '-10.50', 'description': 'Produit mis à jour par Robot Framework', 'category': 'electronics', 'image': 'https://fakestore...</msg>
-<var>${product}</var>
-<arg>$COLLECTION.find_one({"id": ${product_id}})</arg>
+<msg time="2025-08-07T18:27:00.046925" level="INFO">${cart} = {'_id': ObjectId('6894efef5801402a2da72965'), 'id': 9999, 'userId': 999, 'date': '2024/01/01', 'products': []}</msg>
+<var>${cart}</var>
+<arg>$CART_COLLECTION.find_one({"id": ${cart_id}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:22.926606" elapsed="0.250292"/>
+<status status="PASS" start="2025-08-07T18:26:59.811666" elapsed="0.235377"/>
 </kw>
 <return>
-<value>${product}</value>
-<status status="PASS" start="2025-08-07T12:46:23.176952" elapsed="0.000033"/>
+<value>${cart}</value>
+<status status="PASS" start="2025-08-07T18:27:00.047183" elapsed="0.000066"/>
 </return>
-<msg time="2025-08-07T12:46:23.177104" level="INFO">${produit} = {'_id': ObjectId('6894a01b2a7cc65a8e6e3311'), 'id': 999, 'title': '', 'price': '-10.50', 'description': 'Produit mis à jour par Robot Framework', 'category': 'electronics', 'image': 'https://fakestore...</msg>
-<var>${produit}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
-<doc>Lire un produit par ID</doc>
-<status status="PASS" start="2025-08-07T12:46:22.926171" elapsed="0.250956"/>
+<msg time="2025-08-07T18:27:00.047493" level="INFO">${cart} = {'_id': ObjectId('6894efef5801402a2da72965'), 'id': 9999, 'userId': 999, 'date': '2024/01/01', 'products': []}</msg>
+<var>${cart}</var>
+<arg>${TEST_CART_ID}</arg>
+<doc>Lire un panier par ID</doc>
+<status status="PASS" start="2025-08-07T18:26:59.811250" elapsed="0.236291"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:23.177663" level="INFO">Prix négatif autorisé: -10.50</msg>
-<arg>Prix négatif autorisé: ${produit['price']}</arg>
+<msg time="2025-08-07T18:27:00.048855" level="INFO">Date invalide autorisée: 2024/01/01</msg>
+<arg>Date invalide autorisée: ${cart['date']}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:23.177221" elapsed="0.000481"/>
+<status status="PASS" start="2025-08-07T18:27:00.047759" elapsed="0.001184"/>
 </kw>
-<status status="PASS" start="2025-08-07T12:46:22.924777" elapsed="0.252954"/>
+<status status="PASS" start="2025-08-07T18:26:59.809678" elapsed="0.239332"/>
 </branch>
 <branch type="ELSE">
 <kw name="Log" owner="BuiltIn">
 <arg>Données invalides rejetées</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-07T12:46:23.177838" elapsed="0.000016"/>
+<status status="NOT RUN" start="2025-08-07T18:27:00.049246" elapsed="0.000037"/>
 </kw>
-<status status="NOT RUN" start="2025-08-07T12:46:23.177758" elapsed="0.000122"/>
+<status status="NOT RUN" start="2025-08-07T18:27:00.049074" elapsed="0.000267"/>
 </branch>
-<status status="PASS" start="2025-08-07T12:46:22.924736" elapsed="0.253162"/>
+<status status="PASS" start="2025-08-07T18:26:59.809630" elapsed="0.239755"/>
 </if>
-<doc>Test avec données de modification invalides</doc>
+<doc>Test avec date de modification invalide</doc>
+<tag>cart</tag>
 <tag>negative</tag>
 <tag>update</tag>
-<status status="PASS" start="2025-08-07T12:46:22.447581" elapsed="0.730428"/>
+<status status="PASS" start="2025-08-07T18:26:59.336482" elapsed="0.713142"/>
 </test>
-<test id="s1-t10" name="DELETE - Scénario Passant - Supprimer Produit Existant" line="191">
+<test id="s1-t10" name="DELETE - Scénario Passant - Supprimer Panier Existant" line="228">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:23.178535" level="INFO">=== TEST DELETE PASSANT ===</msg>
-<arg>=== TEST DELETE PASSANT ===</arg>
+<msg time="2025-08-07T18:27:00.050524" level="INFO">=== TEST DELETE CART PASSANT ===</msg>
+<arg>=== TEST DELETE CART PASSANT ===</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:23.178453" elapsed="0.000121"/>
+<status status="PASS" start="2025-08-07T18:27:00.050387" elapsed="0.000202"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:23.408430" level="INFO">${cleanup_result} = DeleteResult({'n': 6, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570783, 2), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754570783, 2), 'sig...</msg>
+<msg time="2025-08-07T18:27:00.284793" level="INFO">${cleanup_result} = DeleteResult({'n': 4, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591220, 1), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754591220, 1), 'sig...</msg>
 <var>${cleanup_result}</var>
-<arg>$COLLECTION.delete_many({"id": ${TEST_PRODUCT_ID}})</arg>
+<arg>$CART_COLLECTION.delete_many({"id": ${TEST_CART_ID}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:23.178672" elapsed="0.229861"/>
+<status status="PASS" start="2025-08-07T18:27:00.050764" elapsed="0.234135"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:23.409835" level="INFO">Nettoyage préalable: 6 documents supprimés</msg>
-<arg>Nettoyage préalable: ${cleanup_result.deleted_count} documents supprimés</arg>
+<msg time="2025-08-07T18:27:00.286197" level="INFO">Nettoyage préalable: 4 paniers supprimés</msg>
+<arg>Nettoyage préalable: ${cleanup_result.deleted_count} paniers supprimés</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:23.408904" elapsed="0.001003"/>
+<status status="PASS" start="2025-08-07T18:27:00.285222" elapsed="0.001064"/>
 </kw>
-<kw name="Créer Produit" owner="keywords">
+<kw name="Créer Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:23.660343" level="INFO">${result} = InsertOneResult(ObjectId('6894a01f2a7cc65a8e6e3318'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:27:00.543784" level="INFO">${result} = InsertOneResult(ObjectId('6894eff45801402a2da7296b'), acknowledged=True)</msg>
 <var>${result}</var>
-<arg>$COLLECTION.insert_one($product_data)</arg>
+<arg>$CART_COLLECTION.insert_one($cart_data)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:23.410719" elapsed="0.249696"/>
+<status status="PASS" start="2025-08-07T18:27:00.287284" elapsed="0.256603"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:23.660523" elapsed="0.000093"/>
+<status status="PASS" start="2025-08-07T18:27:00.544051" elapsed="0.000064"/>
 </return>
-<msg time="2025-08-07T12:46:23.660926" level="INFO">${result_create} = InsertOneResult(ObjectId('6894a01f2a7cc65a8e6e3318'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:27:00.544361" level="INFO">${result_create} = InsertOneResult(ObjectId('6894eff45801402a2da7296b'), acknowledged=True)</msg>
 <var>${result_create}</var>
-<arg>&amp;{VALID_PRODUCT_DATA}</arg>
-<doc>Créer un produit dans MongoDB</doc>
-<status status="PASS" start="2025-08-07T12:46:23.410234" elapsed="0.250747"/>
+<arg>&amp;{VALID_CART_DATA}</arg>
+<doc>Créer un panier dans MongoDB</doc>
+<status status="PASS" start="2025-08-07T18:27:00.286736" elapsed="0.257674"/>
 </kw>
 <kw name="Should Not Be Equal" owner="BuiltIn">
-<msg time="2025-08-07T12:46:23.662060" level="INFO">Argument types are:
+<msg time="2025-08-07T18:27:00.545732" level="INFO">Argument types are:
 &lt;class 'bson.objectid.ObjectId'&gt;
 &lt;class 'NoneType'&gt;</msg>
 <arg>${result_create.inserted_id}</arg>
 <arg>${None}</arg>
 <doc>Fails if the given objects are equal.</doc>
-<status status="PASS" start="2025-08-07T12:46:23.661252" elapsed="0.000887"/>
+<status status="PASS" start="2025-08-07T18:27:00.544675" elapsed="0.001153"/>
 </kw>
-<kw name="Compter Produits" owner="keywords">
+<kw name="Compter Paniers" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:23.891574" level="INFO">${count} = 1</msg>
+<msg time="2025-08-07T18:27:00.779229" level="INFO">${count} = 1</msg>
 <var>${count}</var>
-<arg>$COLLECTION.count_documents({"id": ${product_id}})</arg>
+<arg>$CART_COLLECTION.count_documents({"id": ${cart_id}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:23.662765" elapsed="0.228909"/>
+<status status="PASS" start="2025-08-07T18:27:00.546590" elapsed="0.232710"/>
 </kw>
 <return>
 <value>${count}</value>
-<status status="PASS" start="2025-08-07T12:46:23.891843" elapsed="0.000060"/>
+<status status="PASS" start="2025-08-07T18:27:00.779405" elapsed="0.000062"/>
 </return>
-<msg time="2025-08-07T12:46:23.892137" level="INFO">${exists_before} = 1</msg>
+<msg time="2025-08-07T18:27:00.779705" level="INFO">${exists_before} = 1</msg>
 <var>${exists_before}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
-<doc>Compter les produits avec cet ID</doc>
-<status status="PASS" start="2025-08-07T12:46:23.662404" elapsed="0.229898"/>
+<arg>${TEST_CART_ID}</arg>
+<doc>Compter les paniers avec cet ID</doc>
+<status status="PASS" start="2025-08-07T18:27:00.546149" elapsed="0.233603"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-08-07T12:46:23.892854" level="INFO">Argument types are:
+<msg time="2025-08-07T18:27:00.780275" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${exists_before}</arg>
 <arg>1</arg>
-<arg>Produit n'existe pas avant suppression</arg>
+<arg>Panier n'existe pas avant suppression</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-08-07T12:46:23.892568" elapsed="0.000402"/>
+<status status="PASS" start="2025-08-07T18:27:00.780015" elapsed="0.000339"/>
 </kw>
-<kw name="Supprimer Produit" owner="keywords">
+<kw name="Supprimer Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:24.122162" level="INFO">${result} = DeleteResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570784, 3), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754570784, 3), 'sig...</msg>
+<msg time="2025-08-07T18:27:01.024146" level="INFO">${result} = DeleteResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591221, 1), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754591221, 1), 'sig...</msg>
 <var>${result}</var>
-<arg>$COLLECTION.delete_one({"id": ${product_id}})</arg>
+<arg>$CART_COLLECTION.delete_one({"id": ${cart_id}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:23.893725" elapsed="0.228579"/>
+<status status="PASS" start="2025-08-07T18:27:00.781006" elapsed="0.243262"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:24.122416" elapsed="0.000063"/>
+<status status="PASS" start="2025-08-07T18:27:01.024401" elapsed="0.000064"/>
 </return>
-<msg time="2025-08-07T12:46:24.122742" level="INFO">${result} = DeleteResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570784, 3), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754570784, 3), 'sig...</msg>
+<msg time="2025-08-07T18:27:01.024721" level="INFO">${result} = DeleteResult({'n': 1, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591221, 1), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754591221, 1), 'sig...</msg>
 <var>${result}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
-<doc>Supprimer un produit</doc>
-<status status="PASS" start="2025-08-07T12:46:23.893287" elapsed="0.229505"/>
+<arg>${TEST_CART_ID}</arg>
+<doc>Supprimer un panier</doc>
+<status status="PASS" start="2025-08-07T18:27:00.780613" elapsed="0.244159"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-08-07T12:46:24.123988" level="INFO">Argument types are:
+<msg time="2025-08-07T18:27:01.026160" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${result.deleted_count}</arg>
 <arg>1</arg>
 <arg>Aucun document supprimé</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.123051" elapsed="0.001043"/>
+<status status="PASS" start="2025-08-07T18:27:01.025050" elapsed="0.001214"/>
 </kw>
-<kw name="Compter Produits" owner="keywords">
+<kw name="Compter Paniers" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:24.357559" level="INFO">${count} = 0</msg>
+<msg time="2025-08-07T18:27:01.291304" level="INFO">${count} = 0</msg>
 <var>${count}</var>
-<arg>$COLLECTION.count_documents({"id": ${product_id}})</arg>
+<arg>$CART_COLLECTION.count_documents({"id": ${cart_id}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.124908" elapsed="0.232756"/>
+<status status="PASS" start="2025-08-07T18:27:01.027053" elapsed="0.264353"/>
 </kw>
 <return>
 <value>${count}</value>
-<status status="PASS" start="2025-08-07T12:46:24.357825" elapsed="0.000066"/>
+<status status="PASS" start="2025-08-07T18:27:01.291595" elapsed="0.000065"/>
 </return>
-<msg time="2025-08-07T12:46:24.358131" level="INFO">${exists_after} = 0</msg>
+<msg time="2025-08-07T18:27:01.291897" level="INFO">${exists_after} = 0</msg>
 <var>${exists_after}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
-<doc>Compter les produits avec cet ID</doc>
-<status status="PASS" start="2025-08-07T12:46:24.124459" elapsed="0.233718"/>
+<arg>${TEST_CART_ID}</arg>
+<doc>Compter les paniers avec cet ID</doc>
+<status status="PASS" start="2025-08-07T18:27:01.026634" elapsed="0.265309"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-08-07T12:46:24.358729" level="INFO">Argument types are:
+<msg time="2025-08-07T18:27:01.292511" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${exists_after}</arg>
 <arg>0</arg>
-<arg>Produit existe encore après suppression</arg>
+<arg>Panier existe encore après suppression</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.358439" elapsed="0.000390"/>
+<status status="PASS" start="2025-08-07T18:27:01.292203" elapsed="0.000408"/>
 </kw>
-<kw name="Lire Produit" owner="keywords">
+<kw name="Lire Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:24.598866" level="INFO">${product} = None</msg>
-<var>${product}</var>
-<arg>$COLLECTION.find_one({"id": ${product_id}})</arg>
+<msg time="2025-08-07T18:27:01.671238" level="INFO">${cart} = None</msg>
+<var>${cart}</var>
+<arg>$CART_COLLECTION.find_one({"id": ${cart_id}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.359609" elapsed="0.239357"/>
+<status status="PASS" start="2025-08-07T18:27:01.293404" elapsed="0.377941"/>
 </kw>
 <return>
-<value>${product}</value>
-<status status="PASS" start="2025-08-07T12:46:24.599124" elapsed="0.000061"/>
+<value>${cart}</value>
+<status status="PASS" start="2025-08-07T18:27:01.671468" elapsed="0.000060"/>
 </return>
-<msg time="2025-08-07T12:46:24.599422" level="INFO">${product} = None</msg>
-<var>${product}</var>
-<arg>${TEST_PRODUCT_ID}</arg>
-<doc>Lire un produit par ID</doc>
-<status status="PASS" start="2025-08-07T12:46:24.359145" elapsed="0.240322"/>
+<msg time="2025-08-07T18:27:01.671762" level="INFO">${cart} = None</msg>
+<var>${cart}</var>
+<arg>${TEST_CART_ID}</arg>
+<doc>Lire un panier par ID</doc>
+<status status="PASS" start="2025-08-07T18:27:01.292933" elapsed="0.378877"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
-<arg>${product}</arg>
+<arg>${cart}</arg>
 <arg>${None}</arg>
-<arg>Produit encore lisible après suppression</arg>
+<arg>Panier encore lisible après suppression</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.599741" elapsed="0.000362"/>
+<status status="PASS" start="2025-08-07T18:27:01.672074" elapsed="0.000383"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:24.600479" level="INFO">DELETE PASSANT - Produit supprimé avec succès</msg>
-<arg>DELETE PASSANT - Produit supprimé avec succès</arg>
+<msg time="2025-08-07T18:27:01.672836" level="INFO">DELETE CART PASSANT - Panier supprimé avec succès</msg>
+<arg>DELETE CART PASSANT - Panier supprimé avec succès</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.600331" elapsed="0.000224"/>
+<status status="PASS" start="2025-08-07T18:27:01.672685" elapsed="0.000229"/>
 </kw>
-<doc>Test de suppression réussie d'un produit existant</doc>
+<doc>Test de suppression réussie d'un panier existant</doc>
+<tag>cart</tag>
 <tag>delete</tag>
 <tag>positive</tag>
 <tag>smoke</tag>
-<status status="PASS" start="2025-08-07T12:46:23.178158" elapsed="1.422605"/>
+<status status="PASS" start="2025-08-07T18:27:00.049885" elapsed="1.623242"/>
 </test>
-<test id="s1-t11" name="DELETE - Scénario Non Passant 1 - ID Inexistant" line="225">
+<test id="s1-t11" name="DELETE - Scénario Non Passant 1 - ID Inexistant" line="255">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:24.601817" level="INFO">=== TEST DELETE NON PASSANT 1 ===</msg>
-<arg>=== TEST DELETE NON PASSANT 1 ===</arg>
+<msg time="2025-08-07T18:27:01.674304" level="INFO">=== TEST DELETE CART NON PASSANT 1 ===</msg>
+<arg>=== TEST DELETE CART NON PASSANT 1 ===</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.601683" elapsed="0.000197"/>
+<status status="PASS" start="2025-08-07T18:27:01.674151" elapsed="0.000221"/>
 </kw>
-<kw name="Supprimer Produit" owner="keywords">
+<kw name="Supprimer Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:24.828387" level="INFO">${result} = DeleteResult({'n': 0, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570784, 5), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754570784, 5), 'sig...</msg>
+<msg time="2025-08-07T18:27:02.030841" level="INFO">${result} = DeleteResult({'n': 0, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591221, 4), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754591221, 4), 'sig...</msg>
 <var>${result}</var>
-<arg>$COLLECTION.delete_one({"id": ${product_id}})</arg>
+<arg>$CART_COLLECTION.delete_one({"id": ${cart_id}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.602472" elapsed="0.225985"/>
+<status status="PASS" start="2025-08-07T18:27:01.674997" elapsed="0.355953"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:24.828576" elapsed="0.000064"/>
+<status status="PASS" start="2025-08-07T18:27:02.031107" elapsed="0.000123"/>
 </return>
-<msg time="2025-08-07T12:46:24.828901" level="INFO">${result} = DeleteResult({'n': 0, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570784, 5), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754570784, 5), 'sig...</msg>
+<msg time="2025-08-07T18:27:02.031493" level="INFO">${result} = DeleteResult({'n': 0, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591221, 4), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754591221, 4), 'sig...</msg>
 <var>${result}</var>
-<arg>${INVALID_PRODUCT_ID}</arg>
-<doc>Supprimer un produit</doc>
-<status status="PASS" start="2025-08-07T12:46:24.602117" elapsed="0.226834"/>
+<arg>${INVALID_CART_ID}</arg>
+<doc>Supprimer un panier</doc>
+<status status="PASS" start="2025-08-07T18:27:01.674642" elapsed="0.357026"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-08-07T12:46:24.830131" level="INFO">Argument types are:
+<msg time="2025-08-07T18:27:02.033019" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${result.deleted_count}</arg>
 <arg>0</arg>
 <arg>Document supprimé alors qu'il ne devrait pas exister</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.829229" elapsed="0.001006"/>
+<status status="PASS" start="2025-08-07T18:27:02.031939" elapsed="0.001186"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:24.830635" level="INFO">DELETE NON PASSANT 1 - Échec attendu avec ID inexistant</msg>
-<arg>DELETE NON PASSANT 1 - Échec attendu avec ID inexistant</arg>
+<msg time="2025-08-07T18:27:02.033523" level="INFO">DELETE CART NON PASSANT 1 - Échec attendu avec ID inexistant</msg>
+<arg>DELETE CART NON PASSANT 1 - Échec attendu avec ID inexistant</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.830482" elapsed="0.000255"/>
+<status status="PASS" start="2025-08-07T18:27:02.033368" elapsed="0.000234"/>
 </kw>
 <doc>Test d'échec de suppression avec ID inexistant</doc>
+<tag>cart</tag>
 <tag>delete</tag>
 <tag>negative</tag>
 <tag>notfound</tag>
-<status status="PASS" start="2025-08-07T12:46:24.601096" elapsed="0.229810"/>
+<status status="PASS" start="2025-08-07T18:27:01.673450" elapsed="0.360366"/>
 </test>
-<test id="s1-t12" name="DELETE - Scénario Non Passant 2 - Tentative Suppression Sans Permission" line="239">
-<kw name="Créer Produit" owner="keywords">
+<test id="s1-t12" name="DELETE - Scénario Non Passant 2 - Tentative Suppression Massive" line="267">
+<kw name="Créer Panier" owner="cart_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:25.065519" level="INFO">${result} = InsertOneResult(ObjectId('6894a0202a7cc65a8e6e3319'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:27:02.290082" level="INFO">${result} = InsertOneResult(ObjectId('6894eff65801402a2da7296c'), acknowledged=True)</msg>
 <var>${result}</var>
-<arg>$COLLECTION.insert_one($product_data)</arg>
+<arg>$CART_COLLECTION.insert_one($cart_data)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:24.832942" elapsed="0.232678"/>
+<status status="PASS" start="2025-08-07T18:27:02.035096" elapsed="0.255088"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2025-08-07T12:46:25.065800" elapsed="0.000063"/>
+<status status="PASS" start="2025-08-07T18:27:02.290357" elapsed="0.000063"/>
 </return>
-<msg time="2025-08-07T12:46:25.066231" level="INFO">${result} = InsertOneResult(ObjectId('6894a0202a7cc65a8e6e3319'), acknowledged=True)</msg>
+<msg time="2025-08-07T18:27:02.290657" level="INFO">${result} = InsertOneResult(ObjectId('6894eff65801402a2da7296c'), acknowledged=True)</msg>
 <var>${result}</var>
-<arg>&amp;{VALID_PRODUCT_DATA}</arg>
-<doc>Créer un produit dans MongoDB</doc>
-<status status="PASS" start="2025-08-07T12:46:24.831698" elapsed="0.234583"/>
+<arg>&amp;{VALID_CART_DATA}</arg>
+<doc>Créer un panier dans MongoDB</doc>
+<status status="PASS" start="2025-08-07T18:27:02.034672" elapsed="0.256032"/>
 </kw>
 <try>
 <branch type="TRY">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:25.310495" level="INFO">${result} = DeleteResult({'n': 5, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570785, 2), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754570785, 2), 'sig...</msg>
+<msg time="2025-08-07T18:27:02.587642" level="INFO">${result} = DeleteResult({'n': 3, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591222, 3), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754591222, 3), 'sig...</msg>
 <var>${result}</var>
-<arg>$COLLECTION.delete_many({})</arg>
+<arg>$CART_COLLECTION.delete_many({})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:25.066680" elapsed="0.243922"/>
+<status status="PASS" start="2025-08-07T18:27:02.291104" elapsed="0.296643"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-08-07T12:46:25.311783" level="INFO">Argument types are:
+<msg time="2025-08-07T18:27:02.589125" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
-<msg time="2025-08-07T12:46:25.311980" level="FAIL">ATTENTION: Suppression massive non contrôlée détectée !: 5 != 0</msg>
+<msg time="2025-08-07T18:27:02.589295" level="FAIL">ATTENTION: Suppression massive de paniers non contrôlée détectée !: 3 != 0</msg>
 <arg>${result.deleted_count}</arg>
 <arg>0</arg>
-<arg>msg=ATTENTION: Suppression massive non contrôlée détectée !</arg>
+<arg>msg=ATTENTION: Suppression massive de paniers non contrôlée détectée !</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="FAIL" start="2025-08-07T12:46:25.310854" elapsed="0.001390">ATTENTION: Suppression massive non contrôlée détectée !: 5 != 0</status>
+<status status="FAIL" start="2025-08-07T18:27:02.587997" elapsed="0.001432">ATTENTION: Suppression massive de paniers non contrôlée détectée !: 3 != 0</status>
 </kw>
-<status status="FAIL" start="2025-08-07T12:46:25.066513" elapsed="0.245875">ATTENTION: Suppression massive non contrôlée détectée !: 5 != 0</status>
+<status status="FAIL" start="2025-08-07T18:27:02.290932" elapsed="0.298619">ATTENTION: Suppression massive de paniers non contrôlée détectée !: 3 != 0</status>
 </branch>
 <branch type="EXCEPT">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:25.312794" level="INFO">Opération dangereuse correctement bloquée</msg>
+<msg time="2025-08-07T18:27:02.589959" level="INFO">Opération dangereuse correctement bloquée</msg>
 <arg>Opération dangereuse correctement bloquée</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:25.312639" elapsed="0.000237"/>
+<status status="PASS" start="2025-08-07T18:27:02.589804" elapsed="0.000234"/>
 </kw>
-<status status="PASS" start="2025-08-07T12:46:25.312488" elapsed="0.000449"/>
+<status status="PASS" start="2025-08-07T18:27:02.589650" elapsed="0.000448"/>
 </branch>
-<status status="PASS" start="2025-08-07T12:46:25.066449" elapsed="0.246548"/>
+<status status="PASS" start="2025-08-07T18:27:02.290874" elapsed="0.299281"/>
 </try>
-<doc>Test d'échec avec opération non autorisée</doc>
+<doc>Test d'échec avec opération dangereuse</doc>
+<tag>cart</tag>
 <tag>delete</tag>
 <tag>negative</tag>
 <tag>security</tag>
-<status status="PASS" start="2025-08-07T12:46:24.831164" elapsed="0.482064"/>
+<status status="PASS" start="2025-08-07T18:27:02.034083" elapsed="0.556315"/>
 </test>
 <kw name="Run Keywords" owner="BuiltIn" type="TEARDOWN">
-<kw name="Nettoyer Tests" owner="keywords">
+<kw name="Nettoyer Tests Carts" owner="cart_keywords">
 <try>
 <branch type="TRY">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-07T12:46:25.554569" level="INFO">${result} = DeleteResult({'n': 0, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754570785, 3), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754570785, 3), 'sig...</msg>
+<msg time="2025-08-07T18:27:02.818874" level="INFO">${result} = DeleteResult({'n': 0, 'electionId': ObjectId('7fffffff0000000000000040'), 'opTime': {'ts': Timestamp(1754591222, 4), 't': 64}, 'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1754591222, 4), 'sig...</msg>
 <var>${result}</var>
-<arg>$COLLECTION.delete_many({"id": {"$gte": 999}})</arg>
+<arg>$CART_COLLECTION.delete_many({"id": {"$gte": 9999}})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:25.314502" elapsed="0.240174"/>
+<status status="PASS" start="2025-08-07T18:27:02.591693" elapsed="0.227287"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:25.555771" level="INFO">0 documents supprimés</msg>
-<arg>${result.deleted_count} documents supprimés</arg>
+<msg time="2025-08-07T18:27:02.820335" level="INFO">0 carts supprimés</msg>
+<arg>${result.deleted_count} carts supprimés</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:25.554930" elapsed="0.000928"/>
+<status status="PASS" start="2025-08-07T18:27:02.819258" elapsed="0.001165"/>
 </kw>
-<status status="PASS" start="2025-08-07T12:46:25.314391" elapsed="0.241535"/>
+<status status="PASS" start="2025-08-07T18:27:02.591578" elapsed="0.228910"/>
 </branch>
 <branch type="EXCEPT">
 <kw name="Log" owner="BuiltIn">
-<arg>Nettoyage ignoré</arg>
+<arg>Nettoyage carts ignoré</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-07T12:46:25.556155" elapsed="0.000036"/>
+<status status="NOT RUN" start="2025-08-07T18:27:02.820727" elapsed="0.000038"/>
 </kw>
-<status status="NOT RUN" start="2025-08-07T12:46:25.556008" elapsed="0.000242"/>
+<status status="NOT RUN" start="2025-08-07T18:27:02.820573" elapsed="0.000250"/>
 </branch>
-<status status="PASS" start="2025-08-07T12:46:25.314351" elapsed="0.241951"/>
+<status status="PASS" start="2025-08-07T18:27:02.591539" elapsed="0.229338"/>
 </try>
-<doc>Supprimer les données de test</doc>
-<status status="PASS" start="2025-08-07T12:46:25.314201" elapsed="0.242193"/>
+<doc>Supprimer les données de test des carts</doc>
+<status status="PASS" start="2025-08-07T18:27:02.591388" elapsed="0.229584"/>
 </kw>
 <kw name="Fermer MongoDB" owner="keywords">
 <kw name="Run Keyword If" owner="BuiltIn">
 <kw name="Evaluate" owner="BuiltIn">
 <arg>$DB_CLIENT.close()</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-07T12:46:25.557377" elapsed="0.226758"/>
+<status status="PASS" start="2025-08-07T18:27:02.821929" elapsed="0.236162"/>
 </kw>
 <arg>"${DB_CLIENT}" != "${None}"</arg>
 <arg>Evaluate</arg>
 <arg>$DB_CLIENT.close()</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-07T12:46:25.556936" elapsed="0.227332"/>
+<status status="PASS" start="2025-08-07T18:27:02.821555" elapsed="0.236669"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-07T12:46:25.784669" level="INFO">Connexion fermée</msg>
+<msg time="2025-08-07T18:27:03.058611" level="INFO">Connexion fermée</msg>
 <arg>Connexion fermée</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-07T12:46:25.784485" elapsed="0.000273"/>
+<status status="PASS" start="2025-08-07T18:27:03.058429" elapsed="0.000261"/>
 </kw>
 <doc>Fermer la connexion</doc>
-<status status="PASS" start="2025-08-07T12:46:25.556662" elapsed="0.228200"/>
+<status status="PASS" start="2025-08-07T18:27:02.821257" elapsed="0.237542"/>
 </kw>
-<arg>Nettoyer Tests</arg>
+<arg>Nettoyer Tests Carts</arg>
 <arg>Fermer MongoDB</arg>
 <doc>Executes all the given keywords in a sequence.</doc>
-<status status="PASS" start="2025-08-07T12:46:25.313843" elapsed="0.471099"/>
+<status status="PASS" start="2025-08-07T18:27:02.591021" elapsed="0.467864"/>
 </kw>
-<doc>Tests d'intégration CRUD complets sur Products - Suite complète</doc>
-<status status="PASS" start="2025-08-07T12:46:16.194130" elapsed="9.590878"/>
+<doc>Tests d'intégration CRUD complets sur Carts - Suite complète</doc>
+<status status="PASS" start="2025-08-07T18:26:50.141372" elapsed="12.917575"/>
 </suite>
 <statistics>
 <total>
 <stat pass="12" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="12" fail="0" skip="0">cart</stat>
 <stat pass="3" fail="0" skip="0">create</stat>
 <stat pass="3" fail="0" skip="0">delete</stat>
 <stat pass="8" fail="0" skip="0">negative</stat>
@@ -1081,7 +1117,7 @@
 <stat pass="3" fail="0" skip="0">update</stat>
 </tag>
 <suite>
-<stat name="Test Crud Integration" id="s1" pass="12" fail="0" skip="0">Test Crud Integration</stat>
+<stat name="Test Carts Crud Integration" id="s1" pass="12" fail="0" skip="0">Test Carts Crud Integration</stat>
 </suite>
 </statistics>
 <errors>
